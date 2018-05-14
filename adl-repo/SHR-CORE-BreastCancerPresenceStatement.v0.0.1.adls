@@ -1,0 +1,102 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-BreastCancerPresenceStatement.breast_cancer_presence_statement.v0.0.1
+
+specialize
+  SHR-CORE-ConditionPresenceStatement.condition_presence_statement.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"SHR implementation of ASCO requirements.">
+      use = <"SHR implementation of ASCO requirements.">
+      keywords = <"oncology","breast cancer presence statement">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  BreastCancerPresenceStatement[id1.1.1.1.1.1.1] matches {
+    morphologyBehavior matches {
+      MorphologyBehavior[id0.0.0.0.0.0.1] matches {
+        value matches {[ac0.0.0.0.0.0.1]}
+      }
+    }
+
+    /conditionPresenceContext[id0.0.0.0.0.1]/stage/value matches {
+            CodeableConcept[id0.0.0.1] matches {[ac0.0.0.0.0.0.2]}
+          }
+    }
+
+    /findingMethod/value matches {[ac0.0.0.0.0.0.3]}
+
+
+    value matches {[ac0.0.0.0.0.0.4]}
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1.1.1"] = <
+        text = <"BreastCancerPresenceStatement">
+        description = <"FindingTopic or diagnosis of cancer originating in the tissues of the breast, and potentially spread to other organs of the body.
+
+                      The BreastCancerPresenceStatement is a subclass of ConditionPresenceStatement, which is a departure from CIMI. In CIMI, this would be a archetype of ClinicalStatement combining a BreastCancerConditionTopic with the ConditionPresenceContext. This would require definition of BreastCancerConditionTopic in the reference model, follwed by introduction of constraints on Value, Category, Stage, and MorphologyBehavior in the corresponding archetype.">
+      >
+      ["id0.0.0.0.0.0.1"] = <
+        text = <"MorphologyBehavior">
+        description = <"A description of the morphology characteristics of the cancer.">
+      >
+      ["id0.0.0.0.0.0.2"] = <
+        text = <"BreastCancerPrognosticStage">
+        description = <"The prognostic stage of a breast cancer, assessed according to the standard established by American Joint Committee on Cancer (AJCC). Only the prognostic stage is used in US and Canada.">
+      >
+      ["id0.0.0.0.0.0.3"] = <
+        text = <"StageDetail">
+        description = <"-">
+      >
+      ["ac0.0.0.0.0.0.1"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/MorphologyBehaviorVS">
+        description = <"-">
+      >
+      ["ac0.0.0.0.0.0.2"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerStageVS">
+        description = <"-">
+      >
+      ["ac0.0.0.0.0.0.3"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerTypeVS">
+        description = <"-">
+      >
+      ["ac0.0.0.0.0.0.4"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerDetectionVS">
+        description = <"-">
+      >
+      ["at0.0.0.0.0.0.1"] = <
+        text = <"disease">
+        description = <"-">
+      >
+    >
+  >
+  term_bindings = <
+    ["snomed-ct"] = <
+      items = <
+      ["id0.0.0.0.0.0.1"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/MorphologyBehaviorVS>
+      ["id0.0.0.0.0.0.2"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerStageVS>
+      ["id0.0.0.0.1"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerTypeVS>
+      ["id0.0.1"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerDetectionVS>
+      >
+    >
+  >

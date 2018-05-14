@@ -1,0 +1,42 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-BreastRegionalLymphNodeSpecimen.breast_regional_lymph_node_specimen.v0.0.1
+
+specialize
+  SHR-CORE-BreastSpecimen.breast_specimen.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"SHR implementation of ASCO requirements.">
+      use = <"SHR implementation of ASCO requirements.">
+      keywords = <"oncology","breast regional lymph node specimen">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  BreastRegionalLymphNodeSpecimen[id1.1.1.1.1]
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1"] = <
+        text = <"BreastRegionalLymphNodeSpecimen">
+        description = <"The removal of regional lymph node(s) at the time of surgery of the primary site or during a separate surgical event. This model is yet to be determined.">
+      >
+    >
+  >

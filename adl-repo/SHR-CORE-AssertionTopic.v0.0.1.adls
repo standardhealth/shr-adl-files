@@ -1,0 +1,52 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-AssertionTopic.assertion_topic.v0.0.1
+
+specialize
+  SHR-CORE-FindingTopic.finding_topic.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
+      use = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
+      keywords = <"finding","assertion topic">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  AssertionTopic[id1.1.1.1] matches {
+    value matches {
+      CodeableConcept[id0.0.0.1]
+    }
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1"] = <
+        text = <"AssertionTopic">
+        description = <"The base topic for conditions, allergies, adverse events, etc. These are things that are asserted to exist or not. The Value is interpreted in the context of the class; for an AdverseSensitivityToSubstance, the value is the substance, for a ConditionPresenceStatement, the Value represents the type of condition found.
+                      
+                      In CIMI V0.0.4, this class was called Assertion, but CIMI recently decided to change the name to AssertionTopic, as anticipated here. In CIMI V0.0.4, Assertion defines three attributes: dateAsserted, verificationStatus, and findingMethod. VerificationStatus properly only applies in the PresenceContext context, and can be found there. FindingMethod more properly belongs in FindingTopic, and can be found there.">
+      >
+      ["id0.0.0.1"] = <
+        text = <"CodeableConcept">
+        description = <"A set of codes drawn from different coding systems, representing the same concept.">
+      >
+    >
+  >

@@ -1,0 +1,91 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-Specimen.specimen.v0.0.1
+
+specialize
+  SHR-CORE-Entity.entity.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"The SHR Entity domain contains definitions for objects, people and organizations that are involved with the person of record, in some capacity. Entities are things that have separate and distinct existence and objective or conceptual reality. Includes information items, physical objects, health states, and parties.">
+      use = <"The SHR Entity domain contains definitions for objects, people and organizations that are involved with the person of record, in some capacity. Entities are things that have separate and distinct existence and objective or conceptual reality. Includes information items, physical objects, health states, and parties.">
+      keywords = <"entity","specimen">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  Specimen[id1.1.1] matches {
+    type matches {
+      Type[id0.0.1]
+    }
+    sourceSpecimen matches {
+      SourceSpecimen[id0.0.2]
+    }
+    receivedTime matches {
+      ReceivedTime[id0.0.3]
+    }
+    collectionTime matches {
+      CollectionTime[id0.0.4]
+    }
+    collectionMethod matches {
+      CollectionMethod[id0.0.5]
+    }
+    collectionSite matches {
+      CollectionSite[id0.0.6]
+    }
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1"] = <
+        text = <"Specimen">
+        description = <"Sample for analysis. 
+                      
+                      NOTE: This class has been cut down to separate it from other parts of the reference model that are not relevant to the current oncology ballot.">
+      >
+      ["id0.0.1"] = <
+        text = <"Type">
+        description = <"The most specific code (lowest level term) describing the kind or sort of thing being represented.">
+      >
+      ["id0.0.2"] = <
+        text = <"SourceSpecimen">
+        description = <"Identifier for the source specimen from which this specimen was derived.
+                          
+                          In CIMI V0.0.4, this attribute is called parentSpecimenIdentifier (datatype Identifier). The corresponding element in FHIR (Specimen.parent) is type ref(Specimen). It is impossible to map Idenfier to Specimen, so the datatype of this element has been changed to make the mapping feasible.">
+      >
+      ["id0.0.3"] = <
+        text = <"ReceivedTime">
+        description = <"Time received by accepting facility or unit.">
+      >
+      ["id0.0.4"] = <
+        text = <"CollectionTime">
+        description = <"When the sample was obtained, as a specific time or time period.
+                          
+                          Specimen collection time seems to be missing in CIMI V0.0.4. Given that is not in Specimen, the next place to look is in the associated CollectionProcedure, specifically in the Performance context of the clinical statement representing that procedure. But there is no time found there, either, only a temporalContext (type Concept) and duration (not a point in time). If the specimen collection time is supposed to be recorded in Performance.Attribution (a list of actions), it would be nearly impossible to create a mapping.">
+      >
+      ["id0.0.5"] = <
+        text = <"CollectionMethod">
+        description = <"How the specimen was obtained.">
+      >
+      ["id0.0.6"] = <
+        text = <"CollectionSite">
+        description = <"The body site where specimen was collected">
+      >
+    >
+  >

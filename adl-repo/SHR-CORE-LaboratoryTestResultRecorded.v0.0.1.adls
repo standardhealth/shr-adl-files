@@ -1,0 +1,50 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-LaboratoryTestResultRecorded.laboratory_test_result_recorded.v0.0.1
+
+specialize
+  SHR-CORE-EvaluationResultRecorded.evaluation_result_recorded.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
+      use = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
+      keywords = <"finding","laboratory test result recorded">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  LaboratoryTestResultRecorded[id1.1.1.1.1.1] matches {
+    diagnosticService matches {
+      DiagnosticService[id0.0.0.0.0.1]
+    }
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1.1"] = <
+        text = <"LaboratoryTestResultRecorded">
+        description = <"Measurement resulting from a laboratory analysis.">
+      >
+      ["id0.0.0.0.0.1"] = <
+        text = <"DiagnosticService">
+        description = <"A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.">
+      >
+    >
+  >

@@ -1,0 +1,83 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-BreastSpecimen.breast_specimen.v0.0.1
+
+specialize
+  SHR-CORE-Specimen.specimen.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"SHR implementation of ASCO requirements.">
+      use = <"SHR implementation of ASCO requirements.">
+      keywords = <"oncology","breast specimen">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  BreastSpecimen[id1.1.1.1] matches {
+    coldIschemiaTime matches {
+      ColdIschemiaTime[id0.0.0.1]
+    }
+    /type/value matches {[ac0.0.0.1]}
+    /sourceSpecimen/value matches {
+      BreastSpecimen[id0.0.0.3]
+    }
+    /collectionMethod/value matches {[ac0.0.0.2]}
+    /collectionSite/value matches {
+      BreastSite[id0.0.0.2]
+    }
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1"] = <
+        text = <"BreastSpecimen">
+        description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
+      >
+      ["id0.0.0.1"] = <
+        text = <"ColdIschemiaTime">
+        description = <"The time between the chilling of a tissue or tissue sample and the time it is warmed.
+                          NOTE: In CIMI Version 0.0.4, processing of a specimen is represented as an independent clinical statement involving a SpecimenProcessingTopic and PerformanceContext. The CIMI clinical statement would be mapped to FHIR as a Procedure. In this case, the procedure involves chilling the specimen (the key or code) and the duration of that procedure (corresponding to PerformanceContext.duration) would be interpreted as the cold ischemic time. The drawback of this would be that the information on cold ischemic time (necessary for interpreting results) would not travel with the specimen. To provide a cutpoint between this IG and the rest of CIMI, and to avoid unnecessary complexity, an extension was introduced.">
+      >
+      ["id0.0.0.2"] = <
+        text = <"BreastSite">
+        description = <"A body site specific to the breast structure.">
+      >
+      ["id0.0.0.3"] = <
+        text = <"BreastSpecimen">
+        description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
+      >
+      ["ac0.0.0.1"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenTypeVS">
+        description = <"-">
+      >
+      ["ac0.0.0.2"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenCollectionMethodVS">
+        description = <"-">
+      >
+    >
+  >
+  term_bindings = <
+    ["snomed-ct"] = <
+      items = <
+      ["id0.0.0.1"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenTypeVS>
+      ["id0.0.0.2"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenCollectionMethodVS>
+      >
+    >
+  >

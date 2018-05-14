@@ -1,0 +1,86 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-BreastCancerPrognosticStage.breast_cancer_prognostic_stage.v0.0.1
+
+specialize
+  SHR-CORE-EvaluationResultRecorded.evaluation_result_recorded.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"SHR implementation of ASCO requirements.">
+      use = <"SHR implementation of ASCO requirements.">
+      keywords = <"oncology","breast cancer prognostic stage">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  BreastCancerPrognosticStage[id1.1.1.1.1.1] matches {
+    stageTimingPrefix matches {
+      StageTimingPrefix[id0.0.0.0.0.1] matches {
+        value matches {[ac0.0.0.0.0.2]}
+      }
+    }
+
+    /findingMethod existence matches {1..1}
+
+    --/valueChoiceCodeableConcept existence matches {1}
+    --  CodeableConcept[id0.0.0.0.10] existence matches {1..1} matches {[ac0.0.0.0.0.3]}
+    --}
+
+    --matches {
+      --/value matches {
+        --CodeableConcept[id0.0.2] cardinality matches {1..1} matches {[ac0.0.0.0.0.1]}
+      --}
+    --}
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1.1"] = <
+        text = <"BreastCancerPrognosticStage">
+        description = <"The prognostic stage of a breast cancer, assessed according to the standard established by American Joint Committee on Cancer (AJCC). Only the prognostic stage is used in US and Canada.">
+      >
+      ["id0.0.0.0.0.1"] = <
+        text = <"StageTimingPrefix">
+        description = <"Mandatory element indicating when the staging was done, in terms of treatment landmarks, either clinical (at diagnosis prior to treatment) (c), pathologic (post-surgical) (p), post-neoadjuvant clinical (yc), or post-neoadjuvant pathologic(yp). The stage timing code is prefix on the N stage. For example, for post-neoadjuvant clinical staging, the N categories are preceded by 'yc' (e.g. ycNX)">
+      >
+
+      ["ac0.0.0.0.0.1"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/StagingMethodVS">
+        description = <"-">
+      >
+      ["ac0.0.0.0.0.2"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/StageTimingPrefixVS">
+        description = <"-">
+      >
+      ["ac0.0.0.0.0.3"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerStageVS">
+        description = <"-">
+      >
+    >
+  >
+  term_bindings = <
+    ["snomed-ct"] = <
+      items = <
+      ["id0.0.0.0.0.1"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/StagingMethodVS>
+      ["ac0.0.0.0.0.2"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/StageTimingPrefixVS>
+      ["ac0.0.0.0.0.3"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastCancerStageVS>
+      >
+    >
+  >

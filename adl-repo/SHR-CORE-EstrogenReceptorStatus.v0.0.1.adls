@@ -1,0 +1,94 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-EstrogenReceptorStatus.estrogen_receptor_status.v0.0.1
+
+specialize
+  SHR-CORE-SimplifiedLaboratoryTestResultRecorded.simplified_laboratory_test_result_recorded.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"SHR implementation of ASCO requirements.">
+      use = <"SHR implementation of ASCO requirements.">
+      keywords = <"oncology","estrogen receptor status">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  EstrogenReceptorStatus[id1.1.1.1.1.1.1.1] matches {
+   -- topicCode matches {
+    --  CodeableConcept = <[http://loinc.org::16112-5]>
+    -- }
+    specimen matches {
+      BreastSpecimen[id0.0.0.0.0.0.0.3]
+    }
+    /interpretation/value matches {[ac0.0.0.0.0.0.0.1]}
+
+   -- /diagnosticService/value matches  <[http://hl7.org/fhir/us/breastcancer/finding/cs/DiagnosticServiceCS::pathology]>
+    /valueChoiceRange matches {
+      PercentageRange[id0.0.0.0.0.0.0.4]
+    }
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1.1.1.1"] = <
+        text = <"EstrogenReceptorStatus">
+        description = <"Estrogen receptor alpha is the predominant estrogen receptor expressed in breast tissue and is overexpressed in around 50% of breast carcinomas. ER status (positive=present or overexpressed; negative=absent) is a factor in determining prognosis and treatment options.
+
+                      We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The point of view expressed in this model is that positive/negative designation is an interpretation, based on evidence such as NuclearPositivity and AverageStainingIntensity, not a direct result. This also appears to be the most consistent approach across all receptor statuses (ER, PR, and HER2).">
+      >
+      ["id0.0.0.0.0.0.0.2"] = <
+        text = <"CodeableConcept">
+        description = <"A set of codes drawn from different coding systems, representing the same concept.">
+      >
+      ["id0.0.0.0.0.0.0.3"] = <
+        text = <"BreastSpecimen">
+        description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
+      >
+      ["id0.0.0.0.0.0.0.4"] = <
+        text = <"PercentageRange">
+        description = <"A range of percentage values.">
+      >
+      ["ac0.0.0.0.0.0.0.1"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/PositiveNegativeVS">
+        description = <"-">
+      >
+      ["at0.0.0.0.0.0.0.1"] = <
+        text = <"16112-5">
+        description = <"-">
+      >
+      ["at0.0.0.0.0.0.0.2"] = <
+        text = <"pathology">
+        description = <"-">
+      >
+    >
+  >
+  term_bindings = <
+    ["snomed-ct"] = <
+      items = <
+      --   ["id0.0.0.0.0.0.0.1"] = <16112-5>
+      >
+    >
+    ["shr"] = <
+      items = <
+     -- ["id0.0.0.0.0.0.0.2"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/PositiveNegativeVS>
+     -- ["id0.0.0.0.0.0.0.3"] = <pathology>
+      >
+    >
+  >

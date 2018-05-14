@@ -1,0 +1,46 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-Entity.entity.v0.0.1
+
+specialize
+  SHR-CORE-Locatable.locatable.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"The SHR Entity domain contains definitions for objects, people and organizations that are involved with the person of record, in some capacity. Entities are things that have separate and distinct existence and objective or conceptual reality. Includes information items, physical objects, health states, and parties.">
+      use = <"The SHR Entity domain contains definitions for objects, people and organizations that are involved with the person of record, in some capacity. Entities are things that have separate and distinct existence and objective or conceptual reality. Includes information items, physical objects, health states, and parties.">
+      keywords = <"entity","entity">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  Entity[id1.1]
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1"] = <
+        text = <"Entity">
+        description = <"Base class for human, material, and informational things. A non-material thing might be a goal or information relevant to health care, such as an image, consent form, or report. A material thing can be seen and touched, such as a device.
+                      
+                      In CIMI V0.0.4, Entities were not stand-alone classes. However, this is currently being changed in CIMI, so in the future, CIMI entities will more closely correspond to the FHIR entity-like resources such as Organization, Location, Device, Substance, and the like. In order to map to FHIR and produce profiles for this ballot, this change has been anticipated.
+                      
+                      Further, in CIMI V0.0.4, Entity was a subclass of Party. Party is part of CIMI's participation model that is currently undergoing review and revision. Rather than introducing the complexity the CIMI participation model, which has little relevance to the current ballot of cancer profiles and is undergoing revision anyway, the superclass Party has been omitted.">
+      >
+    >
+  >

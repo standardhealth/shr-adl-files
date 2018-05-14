@@ -1,0 +1,66 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-ConditionPresenceStatement.condition_presence_statement.v0.0.1
+
+specialize
+  SHR-CORE-ConditionTopic.condition_topic.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"The SHR Condition domain contains basic definitions used to capture information about problems, concerns, complaints, and disorders.">
+      use = <"The SHR Condition domain contains basic definitions used to capture information about problems, concerns, complaints, and disorders.">
+      keywords = <"condition","condition presence statement">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  ConditionPresenceStatement[id1.1.1.1.1.1] matches {
+    conditionPresenceContext matches {
+      ConditionPresenceContext[id0.0.0.0.0.1] matches {
+        stage matches {
+          Stage[id0.0.0.0.0.2] matches {
+            stageDetail matches {
+              StageDetail[id0.0.0.0.0.3]
+            }
+          }
+        }
+      }
+    }
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1.1"] = <
+        text = <"ConditionPresenceStatement">
+        description = <"A condition that is or may be present in a subject. 'Condition' is interpreted broadly and could be a disorder, abnormality, problem, injury, complaint, functionality, illness, disease, ailment, sickness, affliction, upset, difficulty, disorder, symptom, worry, or trouble.
+
+                      In CIMI terms, it is an archetype of ClinicalStatement that combines a ConditionTopic with the ConditionPresenceContext context. The core attributes of ClinicalStatement are not included here because of mapping difficulties to FHIR DomainResource.
+
+                      In CIMI V0.0.4, this class would be represented as an archetype, specifically, a ClinicalStatement whose topic is ConditionAssertion and whose context is AssertionKnownOrSuspectedPresent.">
+      >
+      ["id0.0.0.0.0.1"] = <
+        text = <"ConditionPresenceContext">
+        description = <"The context for a condition that is known, suspected, or possibly present.
+
+                      In CIMI Version 0.0.4, this class was called AssertionKnownOrSuspectedPresent. The corresponding CIMI class is ungoing a name change to include the word 'StatementContext' and remove the word 'Assertion'.
+
+                      The presence of terminology bindings (necessary to align with FHIR clinicalStatus, severity, and criticality) means that this class cannot be defined entirely within the CIMI reference model. The constraints could only exist in an archetype derived from the reference model class. The logical model here represents both the class structure and the terminology bindings.">
+      >
+    >
+  >

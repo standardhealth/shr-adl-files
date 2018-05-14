@@ -1,0 +1,88 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-TumorMargins.tumor_margins.v0.0.1
+
+specialize
+  SHR-CORE-SimplifiedLaboratoryTestResultRecorded.simplified_laboratory_test_result_recorded.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/8/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"SHR implementation of ASCO requirements.">
+      use = <"SHR implementation of ASCO requirements.">
+      keywords = <"oncology","tumor margins">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  TumorMargins[id1.1.1.1.1.1.1.1] matches {
+    topicCode matches {
+      CodeableConcept = <[http://ncimeta.nci.nih.gov::C4086369]>
+    }
+    specimen matches {
+      BreastSpecimen[id0.0.0.3]
+    }
+    diagnosticService matches {
+      CodeableConcept = <[http://hl7.org/fhir/us/breastcancer/finding/cs/DiagnosticServiceCS::pathology]>
+    }
+    codeableConcept existence matches {1..1} matches {
+      /CodeableConcept matches {[ac0.0.0.0.0.0.0.1]}
+    }
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1.1.1.1"] = <
+        text = <"TumorMargins">
+        description = <"The edge or border of the tissue removed in cancer surgery. The margin is described as negative or clean when the pathologist finds no cancer cells at the edge of the tissue, suggesting that all of the cancer has been removed. The margin is described as positive or involved when the pathologist finds cancer cells at the edge of the tissue, suggesting that all of the cancer has not been removed.">
+      >
+      ["id0.2"] = <
+        text = <"CodeableConcept">
+        description = <"A set of codes drawn from different coding systems, representing the same concept.">
+      >
+      ["id0.0.0.3"] = <
+        text = <"BreastSpecimen">
+        description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
+      >
+      ["ac0.0.0.0.0.0.0.1"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/PositiveNegativeVS">
+        description = <"-">
+      >
+      ["at0.0.0.0.0.0.0.1"] = <
+        text = <"C4086369">
+        description = <"-">
+      >
+      ["at0.0.0.0.0.0.0.2"] = <
+        text = <"pathology">
+        description = <"-">
+      >
+    >
+  >
+  term_bindings = <
+    ["snomed-ct"] = <
+      items = <
+      ["id0.0.0.0.0.0.0.1"] = <C4086369>
+      >
+    >
+    ["SHR"] = <
+      items = <
+      ["id0.0.0.0.0.0.0.2"] = <pathology>
+      ["id0.0.0.0.0.0.0.3"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/PositiveNegativeVS>
+      >
+    >
+  >
