@@ -1,8 +1,8 @@
 archetype (adl_version=2.3; rm_release=0.0.1)
-  SHR-CORE-Entity.entity.v0.0.1
+  SHR-CORE-InformationEntry.information_entry.v0.0.1
 
 specialize
-  SHR-CORE-Locatable.locatable.v0.0.1
+  SHR-CORE-Content.content.v0.0.1
 
 language
   original_language = <[ISO_639-1::en]>
@@ -19,7 +19,7 @@ description
       language = <[ISO_639-1::en]>
       purpose = <"The namespace containing definitions for basic classes in CIMI.">
       use = <"The namespace containing definitions for basic classes in CIMI.">
-      keywords = <"cimi","entity">
+      keywords = <"cimi","information entry">
     >
   >
   lifecycle_state = <"initial">
@@ -29,16 +29,16 @@ description
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
-  Entity[id1.1]
+  InformationEntry[id1.1.1]
 
 terminology
   term_definitions = <
     ["en"] = <
-      ["id1.1"] = <
-        text = <"Entity">
-        description = <"Root class for entities such as people, organizations, and devices that have a separately identifiable existence.
+      ["id1.1.1"] = <
+        text = <"InformationEntry">
+        description = <"An entry in a patient record or in a report, generally used for the documentation of clinical information about a subject of information such as a patient or a relative of the patient, asserted by a particular source, recorded, and potentially verified.
                       
-                      CIMI Alignment: In CIMI V0.0.4, Entity was a subclass of Party. Party is part of CIMI's participation model, which is undergoing review and revision. Rather than introducing the complexity of the CIMI participation model, which has little relevance to breast cancer profiles and is undergoing revision anyway, the Party class has been omitted.">
+                      CIMI Alignment: The CIMI-defined attributes from InformationEntry (identifier, subjectOfInformation, attribution, additionalText, and recordStatus) have been omitted from the current model because of problems mapping between InformationEntry and FHIR DomainResource. Attributes in DomainResource (id, versionId, lastUpdated, profile, security, tag, implicitRules, language, text, contained, extension, modifierExtension) are quite different than those in InformationEntry. Reconciling these differences is outside the scope of the current ballot on breast cancer.">
       >
     >
   >

@@ -12,35 +12,32 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
       language = <[ISO_639-1::en]>
-      purpose = <"The SHR Entity domain contains definitions for objects, people and organizations that are involved with the person of record, in some capacity. Entities are things that have separate and distinct existence and objective or conceptual reality. Includes information items, physical objects, health states, and parties.">
-      use = <"The SHR Entity domain contains definitions for objects, people and organizations that are involved with the person of record, in some capacity. Entities are things that have separate and distinct existence and objective or conceptual reality. Includes information items, physical objects, health states, and parties.">
-      keywords = <"entity","anatomical location">
+      purpose = <"The namespace containing definitions for basic classes in CIMI.">
+      use = <"The namespace containing definitions for basic classes in CIMI.">
+      keywords = <"cimi","anatomical location">
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
   AnatomicalLocation[id1.1.1] matches {
     value matches {
-      CodeableConcept[id0.0.1] matches {[ac0.0.1]}
+      CodeableConcept[id0.0.1]
     }
     laterality matches {
       Laterality[id0.0.2]
     }
-    directionality matches {
-      Directionality[id0.0.3]
-    }
-    portionTotality matches {
-      PortionTotality[id0.0.4]
+    anatomicalDirection matches {
+      AnatomicalDirection[id0.0.3]
     }
   }
 
@@ -49,9 +46,9 @@ terminology
     ["en"] = <
       ["id1.1.1"] = <
         text = <"AnatomicalLocation">
-        description = <"A location or structure in the body, including tissues, regions, cavities, and spaces, for example, right elbow, or left ventricle of the heart.
+        description = <"A location or structure in the body, including tissues, regions, cavities, and spaces; for example, right elbow, or left ventricle of the heart.
 
-                      Note: In CIMI Version 0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here. This class corresponds to that CIMI reference model class, but it would be defined in a CIMI archetype, because it involves value set bindings on each of the attributes.">
+                      CIMI Alignment: In CIMI V0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here.">
       >
       ["id0.0.1"] = <
         text = <"CodeableConcept">
@@ -62,24 +59,12 @@ terminology
         description = <"Anatomical location or specimen further detailing the side(s) of interest.">
       >
       ["id0.0.3"] = <
-        text = <"Directionality">
-        description = <"Anatomical location or specimen further detailing directionality.
-                        Note: In CIMI Version 0.0.4, this is called anatomicalDirection.">
+        text = <"AnatomicalDirection">
+        description = <"Anatomical location or specimen further detailing directionality.">
       >
-      ["id0.0.4"] = <
-        text = <"PortionTotality">
-        description = <"Further detail of the anatomical location or specimen detailing whether it includes the entire entity or only a part or portion. NOTE: This attribute is not part of CIMI. It was included because it further details an anatomical location or specimen, in Clinical Data Interchange Standards Consortium (CDISC) Study Data Tabulation Model (SDTM).">
-      >
-      ["ac0.0.1"] = <
-       text = <"http://hl7.org/fhir/us/breastcancer/entity/vs/AnatomicalLocationVS">
-       description = <"-">
-      >
-    >
-  >
-  term_bindings = <
-    ["shr"] = <
-      items = <
-        ["id0.0.1"] = <http://hl7.org/fhir/us/breastcancer/entity/vs/AnatomicalLocationVS>
-      >
+      --["ac0.0.1"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/cimi-AnatomicalLocationVS">
+      --  description = <"-">
+      -->
     >
   >

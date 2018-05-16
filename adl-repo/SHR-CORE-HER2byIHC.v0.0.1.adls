@@ -2,7 +2,7 @@ archetype (adl_version=2.3; rm_release=0.0.1)
   SHR-CORE-HER2byIHC.h_e_r2by_i_h_c.v0.0.1
 
 specialize
-  SHR-CORE-EvaluationResultRecorded.evaluation_result_recorded.v0.0.1
+  SHR-CORE-LaboratoryTestResultRecorded.laboratory_test_result_recorded.v0.0.1
 
 language
   original_language = <[ISO_639-1::en]>
@@ -12,7 +12,7 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
@@ -23,57 +23,69 @@ description
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
-  HER2byIHC[id1.1.1.1.1.1] matches {
-    topicCode matches {
-      CodeableConcept[id0.0.0.0.0.1] matches {[at0.0.0.0.0.1]}
+  HER2byIHC[id1.1.1.1.1.1.1] matches {
+    statementTopic matches {
+      EvaluationResultTopic[id0.0.0.0.0.0.4] matches {
+        valueChoiceCodeableConcept matches { CodeableConcept[id0.0.0.0.0.0.2] matches { [ac0.0.0.0.0.0.1] } }
+        specimen matches { BreastSpecimen[id0.0.0.0.0.0.3] }
+        anatomicalLocation existence matches {0}
+        precondition existence matches {0}
+     }
     }
-    findingMethod matches {[ac0.0.0.0.0.1]}
-    interpretation matches {[ac0.0.0.0.0.2]}
-    valueChoiceCodeableConcept existence matches {1..1} matches {[ac0.0.0.0.0.3]}
   }
 
 terminology
   term_definitions = <
     ["en"] = <
-      ["id1.1.1.1.1.1"] = <
+      ["id1.1.1.1.1.1.1"] = <
         text = <"HER2byIHC">
         description = <"HER2 receptor status as determined by Immunohistochemistry (IHC).">
       >
-      ["id0.0.0.0.0.1"] = <
+      ["id0.0.0.0.0.0.2"] = <
         text = <"CodeableConcept">
         description = <"A set of codes drawn from different coding systems, representing the same concept.">
       >
-      ["ac0.0.0.0.0.1"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/HER2IHCMethodVS">
+      ["id0.0.0.0.0.0.3"] = <
+        text = <"BreastSpecimen">
+        description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
+      >
+      ["id0.0.0.0.0.0.4"] = <
+        text = <"EvaluationResultTopic">
         description = <"-">
       >
-      ["ac0.0.0.0.0.2"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/PositiveNegativeEquivocalVS">
+      --["id0.0.0.0.0.0.5"] = <
+      --  text = <"Interpretation">
+      --  description = <"-">
+      -->
+      --["id0.0.0.0.0.0.6"] = <
+      --  text = <"FindingMethod">
+      --  description = <"-">
+      -->
+      ["ac0.0.0.0.0.0.1"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-HER2byIHCScoreVS">
         description = <"-">
       >
-      ["ac0.0.0.0.0.3"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/HER2byIHCScoreVS">
-        description = <"-">
-      >
-      ["at0.0.0.0.0.1"] = <
-        text = <"72383-3">
-        description = <"HER2 Presence in Tissue by Immunoassay">
-      >
-    >
-  >
-  term_bindings = <
-    ["shr"] = <
-      items = <
-      ["at0.0.0.0.0.1"] = <http://loinc.org::72383-3>
-      ["id0.0.0.0.0.2"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/HER2IHCMethodVS>
-      ["id0.0.0.0.0.3"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/PositiveNegativeEquivocalVS>
-      ["id0.0.0.0.0.4"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/HER2byIHCScoreVS>
-      >
+      --["ac0.0.0.0.0.0.2"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-HER2IHCMethodVS">
+      --  description = <"-">
+      -->
+      --["ac0.0.0.0.0.0.3"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-PositiveNegativeEquivocalVS">
+      --  description = <"-">
+      -->
+      --["at0.0.0.0.0.0.1"] = <
+      --  text = <"72383-3">
+      --  description = <"HER2 Presence in Tissue by Immunoassay">
+      -->
+      --["at0.0.0.0.0.0.2"] = <
+      --  text = <"pathology">
+      --  description = <"-">
+      -->
     >
   >

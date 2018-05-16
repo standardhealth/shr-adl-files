@@ -2,7 +2,7 @@ archetype (adl_version=2.3; rm_release=0.0.1)
   SHR-CORE-EvaluationResultRecorded.evaluation_result_recorded.v0.0.1
 
 specialize
-  SHR-CORE-EvaluationResultTopic.evaluation_result_topic.v0.0.1
+  SHR-CORE-ClinicalStatement.clinical_statement.v0.0.1
 
 language
   original_language = <[ISO_639-1::en]>
@@ -12,29 +12,32 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
       language = <[ISO_639-1::en]>
-      purpose = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
-      use = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
-      keywords = <"finding","evaluation result recorded">
+      purpose = <"The namespace containing cimi-derived classes representing complete clinical statements. In this specification, these classes derive from the StatementTopic class hierarchy, not ClinicalStatement, which is a significant departure from CIMI. This simplifies the resulting logical models.">
+      use = <"The namespace containing cimi-derived classes representing complete clinical statements. In this specification, these classes derive from the StatementTopic class hierarchy, not ClinicalStatement, which is a significant departure from CIMI. This simplifies the resulting logical models.">
+      keywords = <"cimi.statement","evaluation result recorded">
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
   EvaluationResultRecorded[id1.1.1.1.1] matches {
-    recordedContext matches {
-      RecordedContext[id0.0.0.0.1]
+    members matches {
+      Members[id0.0.0.0.1]
     }
-    /members/value matches {
-      EvaluationResultRecorded[id0.0.0.0.2]
+    statementTopic matches {
+      EvaluationResultTopic[id0.0.0.0.2]
+    }
+    statementContext matches {
+      RecordedContext[id0.0.0.0.3]
     }
   }
 
@@ -44,22 +47,41 @@ terminology
       ["id1.1.1.1.1"] = <
         text = <"EvaluationResultRecorded">
         description = <"Represents the result of evaluations (measurements, tests, or questions) that have been performed.
-
-                      EvaluationResultRecorded has a value representing the result (answer), or an ExceptionValue indicating why the value is not present. The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.">
-      >
-      ["id0.0.0.0.2"] = <
-        text = <"EvaluationResultRecorded">
-        description = <"Represents the result of evaluations (measurements, tests, or questions) that have been performed.
-
+                      
                       EvaluationResultRecorded has a value representing the result (answer), or an ExceptionValue indicating why the value is not present. The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.">
       >
       ["id0.0.0.0.1"] = <
+        text = <"Members">
+        description = <"Members represent the elements of a group of a related but independent evaluations.
+                      
+                      Examples are the measurements that compose a complete blood count (CBC), or the elements of a pathology report. Each member is an independent evaluation, but the grouping reflects a composite lab order, shared specimen, or a single report author. Typically the Category and Reason are not given for individual findings that are part of the panel, but rather given at the level of the panel itself. Although the proper place to define Members this might be in EvaluationResultTopic, it cannot be defined there because the value references EvaluationResultRecorded, which is a clinical statement class.
+                      
+                      CIMI Alignment: CIMI V0.0.4 does not have this attribute and uses CompoundClinicalStatement to create panels. Compared to having a separate class, the current representation closer alignment with FHIR and greater flexibility (related observations can be added to any observation).">
+      >
+      ["id0.0.0.0.2"] = <
+        text = <"EvaluationResultTopic">
+        description = <"The base class, independent of context, for evaluations (measurements, tests, or questions) and a value containing the result (answer).
+                      
+                      The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.
+                      
+                      CIMI Alignment:
+                      1) In CIMI  V0.0.4, LaboratoryTestResult.specimen is 0..* but that cardinality makes it impossible to map to FHIR Observation, where specimen is 0..1. The cardinality of Specimen has been changed to 0..1 to enable FHIR mapping.
+                      2) In CIMI V0.0.4, Findings (including EvaluationResult and LaboratoryTestResult) do not have related ('has-member') observations, nor components (sub-observations). These features of FHIR Observations were found to be very useful in modeling breast cancer pathology, and are included here. This represents a significant departure from the CIMI model. CompoundClinicalStatement has not been used to represent panel-like findings, because of the complexity of mapping this class to FHIR.
+                      3) In CIMI V0.0.4, allowable datatypes for result (aka Value) include EmbeddedContent,  GpsLocation,  Multimedia,  ParsableContent, and other types not allowed in a FHIR Observation. To make mapping feasible, the types of Value were restricted to only the allowable FHIR datatypes.
+                      4) ExceptionValue has been moved to the RecordedContext, because it is only relevant when a value is supposed to be recorded, but is not.
+                      5) The cardinality of FindingMethod has been changed from 0..* to 0..1 to make it possible to map to FHIR, where Observation.method is 0..1.
+                      6) The class PhysicalEvaluationResult has been united with this class, and the body location (AnatomicalLocation) has been added to this class. This is because bodySite is part of Observation, and it cannot be profiled out of EvaluationResult and then re-included in PhysicalEvaluationResult.
+                      7) The cardinality of AnatomicalLocation has been changed from 0..* to 0..1 to make it possible to map to FHIR, where Observation.bodySite is 0..1.
+                      8) The attribute evaluationDate has been moved to RecordedContext, because it only applies to evaluations that have been done.
+                      9) The attributes device and evaluationProcedure have been removed for brevity, since they are not used in the current IG.">
+      >
+      ["id0.0.0.0.3"] = <
         text = <"RecordedContext">
         description = <"Context for an evaluation result, used to indicate an evaluation has been made.
-
-                        For example, measurement of blood pressure that has been made simply exists (although the value can be present or absent, accurate or inaccurate). The RecordedContext indicates the information presented stands on its own as presented. It can also apply to a clinical notes.
-
-                        The RecordedContext class did not exist in CIMI Version 0.0.4, but CIMI is the process of adding it. That change is anticipated here.">
+                      
+                      For example, measurement of blood pressure that has been made simply exists (although the value can be present or absent, accurate or inaccurate). The RecordedContext indicates the information presented stands on its own as presented. It can also apply to clinical notes.
+                      
+                      CIMI Alignment: The RecordedContext class did not exist in CIMI V0.0.4, but CIMI has recently added it.">
       >
     >
   >

@@ -1,0 +1,79 @@
+archetype (adl_version=2.3; rm_release=0.0.1)
+  SHR-CORE-BreastCancerStage.breast_cancer_stage.v0.0.1
+
+specialize
+  SHR-CORE-EvaluationResultRecorded.evaluation_result_recorded.v0.0.1
+
+language
+  original_language = <[ISO_639-1::en]>
+
+description
+  original_author = <
+    ["name"] = <"Mark Kramer">
+    ["organisation"] = <"The MITRE Corporation">
+    ["email"] = <"mkramer@mitre.org">
+    ["date"] = <"5/14/2018">
+  >
+  details = <
+    ["en"] = <
+      language = <[ISO_639-1::en]>
+      purpose = <"SHR implementation of ASCO requirements.">
+      use = <"SHR implementation of ASCO requirements.">
+      keywords = <"oncology","breast cancer stage">
+    >
+  >
+  lifecycle_state = <"initial">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
+  licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
+  copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
+
+definition
+  BreastCancerStage[id1.1.1.1.1.1] matches {
+    stageTimingPrefix matches {
+      StageTimingPrefix[id0.0.0.0.0.1]
+    }
+    statementTopic matches {
+      EvaluationResultTopic[id0.0.0.0.0.3] matches {
+        valueChoiceCodeableConcept matches {
+          CodeableConcept[id0.0.0.0.0.2] matches { [ac0.0.0.0.0.1] }
+        }
+        anatomicalLocation existence matches {0}
+        specimen existence matches {0}
+        referenceRange existence matches {0}
+
+      }
+    }
+  --/statementTopic/value matches { CodeableConcept[id0.0.0.0.0.2] }
+
+  }
+
+terminology
+  term_definitions = <
+    ["en"] = <
+      ["id1.1.1.1.1.1"] = <
+        text = <"BreastCancerStage">
+        description = <"The stage of a breast cancer. Different staging systems use different staging groups, so there are currently no terminology bindings associated with this class.">
+      >
+      ["id0.0.0.0.0.1"] = <
+        text = <"StageTimingPrefix">
+        description = <"Indicates when the staging was done, in terms of treatment landmarks.">
+      >
+      ["id0.0.0.0.0.2"] = <
+        text = <"CodeableConcept">
+        description = <"A set of codes drawn from different coding systems, representing the same concept.">
+      >
+      ["id0.0.0.0.0.3"] = <
+        text = <"EvaluationResultTopic">
+        description = <"-">
+      >
+      ["ac0.0.0.0.0.1"] = <
+        text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-BreastCancerStageVS">
+        description = <"-">
+      >
+      --["at0.0.0.0.0.1"] = <
+        --text = <"C2216702">
+        --description = <"Malignant Neoplasm of Breast Staging">
+      -->
+    >
+  >

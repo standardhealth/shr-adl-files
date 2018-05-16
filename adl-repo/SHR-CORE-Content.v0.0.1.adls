@@ -1,5 +1,5 @@
 archetype (adl_version=2.3; rm_release=0.0.1)
-  SHR-CORE-Entity.entity.v0.0.1
+  SHR-CORE-Content.content.v0.0.1
 
 specialize
   SHR-CORE-Locatable.locatable.v0.0.1
@@ -19,7 +19,7 @@ description
       language = <[ISO_639-1::en]>
       purpose = <"The namespace containing definitions for basic classes in CIMI.">
       use = <"The namespace containing definitions for basic classes in CIMI.">
-      keywords = <"cimi","entity">
+      keywords = <"cimi","content">
     >
   >
   lifecycle_state = <"initial">
@@ -29,16 +29,14 @@ description
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
-  Entity[id1.1]
+  Content[id1.1]
 
 terminology
   term_definitions = <
     ["en"] = <
       ["id1.1"] = <
-        text = <"Entity">
-        description = <"Root class for entities such as people, organizations, and devices that have a separately identifiable existence.
-                      
-                      CIMI Alignment: In CIMI V0.0.4, Entity was a subclass of Party. Party is part of CIMI's participation model, which is undergoing review and revision. Rather than introducing the complexity of the CIMI participation model, which has little relevance to breast cancer profiles and is undergoing revision anyway, the Party class has been omitted.">
+        text = <"Content">
+        description = <"Abstract ancestor of all concrete content types. A unit of content that makes up a composition - e.g., a clinical statement in a patient record, a simple or composite action is a knowledge document, a catalog entry in a catalog.">
       >
     >
   >

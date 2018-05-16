@@ -16,10 +16,12 @@ model_name = <"CORE">
 schema_revision = <"Fri Jul 28 17:57:05 PDT 2017">
 schema_lifecycle_state = <"dstu">
 schema_description = <"RM_CLINICAL.v0.0.1 - Schema generated from CIMPL">
+
+
 -- ----------------------------------
 -- archetyping
 -- ----------------------------------
-archetype_rm_closure_packages = <"SHR_Clinical.ShrBase, SHR_Clinical.Cimi, SHR_Clinical.Condition, SHR_Clinical.ShrCore, SHR_Clinical.Entity, SHR_Clinical.Finding, SHR_Clinical.Oncology">
+archetype_rm_closure_packages = <"SHR_CLINICAL.ShrBase, SHR_CLINICAL.Cimi, SHR_CLINICAL.CimiStatement, SHR_CLINICAL.ShrCore, SHR_CLINICAL.Oncology">
 includes = <
 	["1"] = <
 		id = <"shr_rm_primitives_0.0.1">
@@ -35,48 +37,46 @@ packages = <
 			>
 			["Cimi"] = <
 				name = <"Cimi">
-				classes = <"Locatable", "InformationEntry", "ClinicalStatement", "StatementTopic", "TopicCode", "StatementContext", "ContextCode">
+				classes = <"Locatable", "Content", "InformationEntry", "ClinicalStatement", "Encounter", "CompoundClinicalStatement", "IndivisibleClinicalStatement", "StatementTopic", "TopicCode", "StatementContext", "ContextCode", "FindingContext", "EvaluationResultContext", "AssertionContext", "PresenceContext", "VerificationStatus", "Certainty", "RecordedContext", "FindingStatus", "ExceptionValue", "RelevantTime", "FindingTopic", "Interpretation", "FindingMethod", "AssertionTopic", "EvaluationResultTopic", "DeltaFlag", "Precondition", "Type", "ReferenceRange", "ApplicableSubpopulation", "ApplicableAgeRange", "EvaluationComponent", "ConditionTopic", "ClinicalStatus", "Severity", "Criticality", "ConditionPresenceContext", "Onset", "PresentOnAdmission", "Abatement", "Entity", "AnatomicalLocation", "Laterality", "AnatomicalDirection", "Specimen", "SourceSpecimen", "CollectionTime", "CollectionMethod", "CollectionSite">
 			>
-			["Condition"] = <
-				name = <"Condition">
-				classes = <"ConditionTopic", "ClinicalStatus", "Severity", "Criticality", "ConditionPresenceContext", "Onset", "PresentOnAdmission", "Abatement", "Stage", "StageDetail", "ConditionPresenceStatement">
+			["CimiStatement"] = <
+				name = <"CimiStatement">
+				classes = <"EvaluationResultRecorded", "Members", "LaboratoryTestResultRecorded", "DiagnosticService", "SimplifiedLaboratoryTestResultRecorded", "ConditionPresenceStatement", "Stage", "StageDetail">
 			>
 			["ShrCore"] = <
 				name = <"ShrCore">
 				classes = <"Category", "Quantity", "Comparator", "Units", "SimpleQuantity", "Age", "Coding", "CodeSystem", "CodeSystemVersion", "CodeableConcept", "LowerBound", "UpperBound", "Range", "PercentageRange", "Ratio", "Numerator", "Denominator", "TimePeriod", "TimePeriodStart", "TimePeriodEnd", "Percentage", "ClockDirection", "AgeRange", "ReceivedTime", "DisplayText">
 			>
-			["Entity"] = <
-				name = <"Entity">
-				classes = <"Entity", "AnatomicalLocation", "Laterality", "Directionality", "PortionTotality", "AnatomicalLocationOrCode", "Specimen", "SourceSpecimen", "CollectionTime", "CollectionMethod", "CollectionSite">
-			>
-			["Finding"] = <
-				name = <"Finding">
-				classes = <"FindingTopic", "AssertionTopic", "FindingContext", "AssertionContext", "PresenceContext", "VerificationStatus", "EvaluationResultContext", "Certainty", "RecordedContext", "FindingStatus", "RelevantTime", "FindingMethod", "EvaluationResultTopic", "DeltaFlag", "Interpretation", "Precondition", "Type", "ReferenceRange", "ApplicableSubpopulation", "ApplicableAgeRange", "EvaluationComponent", "Members", "EvaluationResultRecorded", "ExceptionValue", "LaboratoryTestResultRecorded", "DiagnosticService", "SimplifiedLaboratoryTestResultRecorded", "BodyStructureTopic", "Morphology", "BodyStructurePresent">
-			>
 			["Oncology"] = <
 				name = <"Oncology">
-				classes = <"BreastSite", "DistanceToNipple", "BreastSpecimen", "ColdIschemiaTime", "BreastRegionalLymphNodeSpecimen", "MorphologyBehavior", "BreastCancerPresenceStatement", "StageTimingPrefix", "BreastCancerPrognosticStage", "BreastCancerTCategory", "BreastCancerNCategory", "BreastCancerMCategory", "NuclearGrade", "HistologicGrade", "TubuleFormationScore", "NuclearPleomorphismScore", "MitoticCountScore", "EstrogenReceptorStatus", "ProgesteroneReceptorStatus", "AverageStainingIntensity", "HER2ReceptorStatus", "HER2byIHC", "CompleteMembraneStainingPercent", "HER2byISH", "AverageHER2SignalsPerCell", "AverageCEP17SignalsPerCell", "HER2toCEP17Ratio", "Aneusomy", "HeterogeneousSignals", "PercentageAmplified", "OncotypeDxInvasiveRecurrenceScore", "OncotypeDxDCISRecurrenceScore", "ProsignaRecurrenceScore", "MammaprintRecurrenceScore", "TumorDimensions", "TumorPrimaryDimensionSize", "TumorSecondaryDimensionSize", "SizeOfGrossTumorBed", "TumorMargins", "TumorMarginDescription", "Cellularity", "PercentageInSituCarcinoma", "LymphaticInvolvement", "LargestLymphNodeSize", "NumberOfLymphNodesInvolved", "DegreeOfLymphaticInvolvement", "Ki-67LabelingIndex", "S-PhaseFraction">
+				classes = <"BreastSite", "DistanceToNipple", "BreastSpecimen", "ColdIschemiaTime", "MorphologyBehavior", "BreastCancerPresenceStatement", "BreastCancerStage", "StageTimingPrefix", "BreastCancerPrimaryTumorClassification", "BreastCancerRegionalNodesClassification", "StageSuffix", "BreastCancerDistantMetastasesClassification", "DCISNuclearGrade", "BreastCancerHistologicGrade", "TubuleFormationScore", "NuclearPleomorphismScore", "MitoticCountScore", "EstrogenReceptorStatus", "ProgesteroneReceptorStatus", "NuclearPositivity", "AverageStainingIntensity", "HER2ReceptorStatus", "HER2byIHC", "CompleteMembraneStainingPercent", "HER2byISH", "AverageHER2SignalsPerCell", "AverageCEP17SignalsPerCell", "HER2toCEP17Ratio", "OncotypeDxInvasiveRecurrenceScore", "OncotypeDxDCISRecurrenceScore", "ProsignaRecurrenceScore", "MammaprintRecurrenceScore">
 			>
 		>
 	>
 >
+
 class_definitions = <
 	["Entry"] = <
-		documentation = <"Entry contains attributes that apply to all such items. An Entry may represent an item in a single person's health record, or could represent an entity that surfaces in multiple patient records, such as organizations or practitioners.">
+		documentation = <"Entry contains attributes that apply to all such items. An Entry may represent an item in a single person's health record, or could represent an entity that surfaces in multiple patient records, such as organizations or practitioners. For the purposes of the breast cancer ballot, this class has been stubbed out, to delving into the differences between the standard attributes of CIMI entries versus FHIR resources.">
 		name = <"Entry">
 	>
 	["Locatable"] = <
 		documentation = <"Abstract top level class in the hierarchy. Locatable defines the idea of 'locatability in an archetyped structure'.
 
-			Having this class at the top of the class hierarchy reflects CIMI's use of Archetype Description Language (ADL). In CIMI, Locatable brings with it three attributes that occur in every CIMI child class: archetype_node_id, name (not a healthcare-relevant name, but a name created at runtime), and archetype_details. These attributes reflect a CIMI model implementation detail, and are irrelevant to cancer detailed clinical models, and should by rights remain hidden. So as to not complicate all profiles with extra extensions, these three attributes have been omitted.">
+			CIMI Alignment: The Locatable class reflects CIMI's current implementation using Archetype Description Language (ADL). Its attributes (archetype_node_id, name, and archetype_details) are necessary to serialize CIMI definitions in ADL. By all rights, these attributes should be invisible in clinical models. To avoid complicating the breast cancer profiles with extensions irrelevant to the clinical content, the attributes of Locatable have been omitted.">
 		name = <"Locatable">
 	>
-	["InformationEntry"] = <
-		documentation = <"An InformationEntry is the minimal unit independent of logical information or knowledge, such as a clinical statement in a patient record, a knowledge entry in a knowledge artifact, a product in a product catalog, etc.
-
-			TThe CIMI-defined attributes from InformationEntry (and those inherited from Entry) have been omitted from the current model because of problems mapping between InformationEntry and FHIR DomainResource. Attributes in DomainResource (id, versionId, lastUpdated, profile, security, tag, implicitRules, language, text, contained, extension, modifierExtension) are quite different than those in InformationEntry (identifier, subjectOfInformation, attribution, additionalText, recordStatus). Reconciling these differences is outside the scope of the current ballot on breast cancer. ">
-		name = <"InformationEntry">
+	["Content"] = <
+		documentation = <"Abstract ancestor of all concrete content types. A unit of content that makes up a composition - e.g., a clinical statement in a patient record, a simple or composite action is a knowledge document, a catalog entry in a catalog.">
+		name = <"Content">
 		ancestors = <"Locatable", ...>
+	>
+	["InformationEntry"] = <
+		documentation = <"An entry in a patient record or in a report, generally used for the documentation of clinical information about a subject of information such as a patient or a relative of the patient, asserted by a particular source, recorded, and potentially verified.
+
+			CIMI Alignment: The CIMI-defined attributes from InformationEntry (identifier, subjectOfInformation, attribution, additionalText, and recordStatus) have been omitted from the current model because of problems mapping between InformationEntry and FHIR DomainResource. Attributes in DomainResource (id, versionId, lastUpdated, profile, security, tag, implicitRules, language, text, contained, extension, modifierExtension) are quite different than those in InformationEntry. Reconciling these differences is outside the scope of the current ballot on breast cancer.">
+		name = <"InformationEntry">
+		ancestors = <"Content", ...>
 	>
 	["ClinicalStatement"] = <
 		documentation = <"A special type of information entry consisting of a topic and a context.
@@ -86,29 +86,69 @@ class_definitions = <
 		ancestors = <"InformationEntry", ...>
 		properties = <
 			["statementTopic"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Compositional and reusable grouping of attributes that make up the clinical focus of an entry.
+				documentation = <"Compositional and reusable grouping of clinical statement attributes that make up the clinical focus of a statement.
 
-					A topic does not include contextual attributes such as the nature of the action (ordered, proposed, planned, etc.), the nature of the patient state being described (e.g., present, suspected present, absent), and the attribution of this information (the who, when, where, how, why of the information recorded).">
+					StatementTopic class attributes are aligned with SNOMED CT Concept Model attributes when such an overlap exists. Note that this class does not include contextual attributes such as the nature of the action (ordered, proposed, planned, etc...), the nature of the patient state being described (e.g., present, suspected present, absent), and the attribution of this information (the who, when, where, how, why of the information recorded).
+
+					CIMI Alignment: StatementTopic had an attribute called 'key' in CIMI V0.0.4, but CIMI is renaming it 'TopicCode', as represented here.">
 				name = <"statementTopic">
 				type = <"StatementTopic">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
 			["statementContext"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Compositional and reusable grouping of attributes that provides the context for the topic of a clinical statement.
+				documentation = <"Compositional and reusable grouping of clinical statement attributes that provides the context for the topic of a clinical statement.
 
-					StatementContext provides the expressivity required to specify that an act was performed or not performed or that a finding was asserted to be present or absent for the given subject of information.">
+					The StatementContext class aligns with the SNOMED CT Situations with Explicit Context (SWEC) Concept Model. The StatementContext provides the expressivity required to specify that an act was performed or not performed or that a finding was asserted to be present or absent for the given subject of information. It also often holds provenance information relevant to the context of the clinical statement. It is important to note that by default the context applies to the conjunction of the attribute specified in the statement. For instance, if a clinical statement has a topic describing a rash on left arm and a context of 'absent', then the statement states that the subject of interest did not have a rash on the left arm but might have had one on the right arm.
+
+					CIMI Alignment: ContextCode is the new CIMI name for the attribute formerly called 'type' in CIMI V0.0.4. The attribute 'temporalContext' that appeared in CIMI V0.0.4 is no longer part of CIMI.">
 				name = <"statementContext">
 				type = <"StatementContext">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
+			["encounter"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"An abstract class that represents an encounter class. This class has been stubbed out to limit the scope of this implementation guide to classes relevant to this ballot concerning breast cancer.">
+				name = <"encounter">
+				type = <"Encounter">
+			>
 		>
 	>
-	["StatementTopic"] = <
-		documentation = <"Compositional and reusable grouping of attributes that make up the clinical focus of an entry.
+	["Encounter"] = <
+		documentation = <"An abstract class that represents an encounter class. This class has been stubbed out to limit the scope of this implementation guide to classes relevant to this ballot concerning breast cancer.">
+		name = <"Encounter">
+		ancestors = <"InformationEntry", ...>
+	>
+	["CompoundClinicalStatement"] = <
+		documentation = <"A CompoundClinicalStatement is a clinical statement representing a collection of independent clinical statements.
 
-			A topic does not include contextual attributes such as the nature of the action (ordered, proposed, planned, etc.), the nature of the patient state being described (e.g., present, suspected present, absent), and the attribution of this information (the who, when, where, how, why of the information recorded).">
+			Each statement within a compound clinical statement may exist outside of the context of the compound clinical statement without any alteration to its meaning. An example is a Panel. Note that complex medications are indivisible clinical statements even though their structure may be a composite data structure. They are generally treated as an independent entry in a record and their parts do not constitute independent entries in a record.">
+		name = <"CompoundClinicalStatement">
+		ancestors = <"ClinicalStatement", ...>
+		properties = <
+			["clinicalStatement"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A special type of information entry consisting of a topic and a context.
+
+					The ClinicalStatement class provides the core pattern for more specific clinical statement classes, such as a statement that a finding has been found in a patient or that a procedure has been proposed by a clinical decision support system. The ClinicalStatement pattern defines the core attributes common to most clinical statements and specifies a composition pattern that encourage model component reuse and better alignment with the SNOMED CT Concept Model. A clinical statement is composed of the StatementTopic class (grouping of attributes for capturing information about a procedure or a clinical finding) and the StatementContext class (grouping of attributes providing the context for the statement topic such as whether a procedure was performed, requested, not performed or whether a finding is suspected present or absent in the patient). At the archetype level, the topic and context components are coordinated to form the clinical statement. For instance, the composition of the ProcedureTopic with the NotPerformed context indicates that the given procedure was not performed.">
+				name = <"clinicalStatement">
+				type = <"ClinicalStatement">
+				cardinality = <|>=0|>
+			>
+		>
+	>
+	["IndivisibleClinicalStatement"] = <
+		documentation = <"Represents clinical statements that cannot be further decomposed into multiple independent clinical statements, i.e., all clinical statements that are not CompoundClinicalStatements.
+
+			An indivisible clinical statement must be able to stand alone, such as a systolic blood pressure measurement, which can be interpreted both inside a blood pressure panel or on its own. If the statement cannot stand alone, e.g., the size of a wound, which cannot exist outside the context of the wound itself, then the Component class should be used instead.">
+		name = <"IndivisibleClinicalStatement">
+		ancestors = <"ClinicalStatement", ...>
+	>
+	["StatementTopic"] = <
+		documentation = <"Compositional and reusable grouping of clinical statement attributes that make up the clinical focus of a statement.
+
+			StatementTopic class attributes are aligned with SNOMED CT Concept Model attributes when such an overlap exists. Note that this class does not include contextual attributes such as the nature of the action (ordered, proposed, planned, etc...), the nature of the patient state being described (e.g., present, suspected present, absent), and the attribution of this information (the who, when, where, how, why of the information recorded).
+
+			CIMI Alignment: StatementTopic had an attribute called 'key' in CIMI V0.0.4, but CIMI is renaming it 'TopicCode', as represented here.">
 		name = <"StatementTopic">
 		ancestors = <"Locatable", ...>
 		properties = <
@@ -117,7 +157,7 @@ class_definitions = <
 
 					For action topics, the TopicCode represents the action being described. For findings, the TopicCode represents the 'question' or property being investigated. For evaluation result findings, the TopicCode contains a concept for an observable entity, such as systolic blood pressure. For assertion findings, the TopicCode contains a code representing the condition, allergy, or other item being asserted. In all cases, the TopicCode describes the topic independent of the context of the action or the finding.
 
-					This attribute was named 'key' in CIMI V0.0.4. Recently, CIMI has recently moved to rename this element TopicCode, as anticipated here, to make it more clear that this is an identifier for the topic, not the context.">
+					CIMI Alignment: TopicCode is the new CIMI name for the attribute formerly called 'key' in CIMI V0.0.4.">
 				name = <"topicCode">
 				type = <"TopicCode">
 				is_mandatory = <True>
@@ -130,7 +170,7 @@ class_definitions = <
 
 			For action topics, the TopicCode represents the action being described. For findings, the TopicCode represents the 'question' or property being investigated. For evaluation result findings, the TopicCode contains a concept for an observable entity, such as systolic blood pressure. For assertion findings, the TopicCode contains a code representing the condition, allergy, or other item being asserted. In all cases, the TopicCode describes the topic independent of the context of the action or the finding.
 
-			This attribute was named 'key' in CIMI V0.0.4. Recently, CIMI has recently moved to rename this element TopicCode, as anticipated here, to make it more clear that this is an identifier for the topic, not the context.">
+			CIMI Alignment: TopicCode is the new CIMI name for the attribute formerly called 'key' in CIMI V0.0.4.">
 		name = <"TopicCode">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -143,9 +183,11 @@ class_definitions = <
 		>
 	>
 	["StatementContext"] = <
-		documentation = <"Compositional and reusable grouping of attributes that provides the context for the topic of a clinical statement.
+		documentation = <"Compositional and reusable grouping of clinical statement attributes that provides the context for the topic of a clinical statement.
 
-			StatementContext provides the expressivity required to specify that an act was performed or not performed or that a finding was asserted to be present or absent for the given subject of information.">
+			The StatementContext class aligns with the SNOMED CT Situations with Explicit Context (SWEC) Concept Model. The StatementContext provides the expressivity required to specify that an act was performed or not performed or that a finding was asserted to be present or absent for the given subject of information. It also often holds provenance information relevant to the context of the clinical statement. It is important to note that by default the context applies to the conjunction of the attribute specified in the statement. For instance, if a clinical statement has a topic describing a rash on left arm and a context of 'absent', then the statement states that the subject of interest did not have a rash on the left arm but might have had one on the right arm.
+
+			CIMI Alignment: ContextCode is the new CIMI name for the attribute formerly called 'type' in CIMI V0.0.4. The attribute 'temporalContext' that appeared in CIMI V0.0.4 is no longer part of CIMI.">
 		name = <"StatementContext">
 		ancestors = <"Locatable", ...>
 		properties = <
@@ -154,7 +196,7 @@ class_definitions = <
 
 					Attribute aligns with the SNOMED CT Situation with Explicit Context (SWEC) Concept Model context attributes: 'Finding context (attribute)' (SCTID: 408729009) and 'Procedure context (attribute)' (SCTID: 408730004). The range allowed for this attribute shall be consistent with the SNOMED CT concept model specification for SWEC.
 
-					This attribute was named 'type' in CIMI V0.0.4. However, CIMI has recently moved to rename this element ContextCode, as anticipated here, to make it more clear that this is an identifier for the context, not the topic.">
+					CIMI Alignment: ContextCode is the new CIMI name for the attribute formerly called 'type' in CIMI V0.0.4.">
 				name = <"contextCode">
 				type = <"ContextCode">
 				is_mandatory = <True>
@@ -167,7 +209,7 @@ class_definitions = <
 
 			Attribute aligns with the SNOMED CT Situation with Explicit Context (SWEC) Concept Model context attributes: 'Finding context (attribute)' (SCTID: 408729009) and 'Procedure context (attribute)' (SCTID: 408730004). The range allowed for this attribute shall be consistent with the SNOMED CT concept model specification for SWEC.
 
-			This attribute was named 'type' in CIMI V0.0.4. However, CIMI has recently moved to rename this element ContextCode, as anticipated here, to make it more clear that this is an identifier for the context, not the topic.">
+			CIMI Alignment: ContextCode is the new CIMI name for the attribute formerly called 'type' in CIMI V0.0.4.">
 		name = <"ContextCode">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -179,59 +221,42 @@ class_definitions = <
 			>
 		>
 	>
-	["FindingTopic"] = <
-		documentation = <"Base class - independent of context - for all kinds of determinations: questions/answers, conditions, observations, allergies, and other findings.
-
-			The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.
-
-			In CIMI V0.0.4, FindingTopic has four attributes: result, description, multimedia, and intepretation. In this model, the result is captured as the Value in AssertionTopic and EvaluationResultTopic. Description has been omitted for brevity. Multimedia has not yet come up in modeling discussions, and has been omitted, for now. Interpretation applies to EvaluationResult and has been introduced in that class.">
-		name = <"FindingTopic">
-		ancestors = <"StatementTopic", ...>
-		properties = <
-			["findingMethod"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The technique used to create the finding, for example, the specific imaging technical, lab test code, or assessment vehicle. In CIMI Version 0.0.4, this attribute is called 'method'.">
-				name = <"findingMethod">
-				type = <"FindingMethod">
-			>
-		>
-	>
-	["AssertionTopic"] = <
-		documentation = <"The base topic for conditions, allergies, adverse events, etc. These are things that are asserted to exist or not. The Value is interpreted in the context of the class; for an AdverseSensitivityToSubstance, the value is the substance, for a ConditionPresenceStatement, the Value represents the type of condition found.
-
-			In CIMI V0.0.4, this class was called Assertion, but CIMI recently decided to change the name to AssertionTopic, as anticipated here. In CIMI V0.0.4, Assertion defines three attributes: dateAsserted, verificationStatus, and findingMethod. VerificationStatus properly only applies in the PresenceContext context, and can be found there. FindingMethod more properly belongs in FindingTopic, and can be found there.">
-		name = <"AssertionTopic">
-		ancestors = <"FindingTopic", ...>
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-			>
-		>
-	>
 	["FindingContext"] = <
-		documentation = <"The base class for representing the ontological status of a finding, e.g., present, absent, goal, risk, expectation, etc.
+		documentation = <"The FindingContext class provides the context for the EvaluationResultTopic and AssertionTopic in a clinical statement.
 
-			In CIMI Version 0.0.4, FindingContext includes the attribute 'status'. However, there are two problems with including FindingContext.status: (1) to align with FHIR, the datatype of status has to be Concept, but in CIMI, the datatype of status is Attribution, which can't be mapped. (2) Status might not have the same interpretation in all child classes. For example, in GoalContext, the status might be relative to the progress toward the goal, not the same meaning as the status of a finding.">
+			For instance, a statement about findings may state that the finding was observed to be present or absent. This class aligns with the SNOMED Situation with Explicit Context.The base class for representing the ontological status of a finding, e.g., present, absent, goal, risk, expectation, etc.
+
+			CIMI Alignment: In CIMI V0.0.4, FindingContext included a 'status' attribute. However, there are several problems with this. (1) To align with FHIR, the datatype of status should be Concept, not Attribution. (2) In FHIR, different types of status with different shades of meaning are found in different subclasses, for example, clinicalStatus and verificationStatus in Condition, and status in Observation. (3) Status will not be uniform in meaning across all CIMI finding contexts. For example, in GoalContext, the relevant status might be the progress toward the goal, which does not have the same meaning as the status of an EvaluationResult.">
 		name = <"FindingContext">
 		ancestors = <"StatementContext", ...>
 	>
+	["EvaluationResultContext"] = <
+		documentation = <"The parent class of contexts that can associate with EvaluationResultTopic and its subclasses.
+
+			CIMI Alignment: This class was recently added to CIMI (after V0.0.4)">
+		name = <"EvaluationResultContext">
+		ancestors = <"FindingContext", ...>
+	>
 	["AssertionContext"] = <
-		documentation = <"The parent class of contexts that can associate with AssertionTopic and its subclasses.">
+		documentation = <"The parent class of contexts that can associate with AssertionTopic and its subclasses.
+
+			CIMI Alignment: This class was recently added to CIMI (after V0.0.4).">
 		name = <"AssertionContext">
 		ancestors = <"FindingContext", ...>
 	>
 	["PresenceContext"] = <
-		documentation = <"PresenceContext indicates the finding in question exists or is present to some level of certainty.
+		documentation = <"PresenceContext indicates that the finding in question exists or is present to some level of certainty.
 
 			For example, if the finding involves a myocardial infarction, the presence context implies that cardiac arrest has (or may have) taken place. Note that the name Presence is used rather than Present to prevent confusion with the temporal meaning of present.
 
-			In CIMI Version 0.0.4, there were two classes, KnownOrSuspectedPresent and AssertionKnownOrSuspectedPresent. CIMI has decided to combine these classes and rename them to PresenceContext, as represented here.">
+			CIMI Alignment: In CIMI V0.0.4, there were two classes, KnownOrSuspectedPresent and AssertionKnownOrSuspectedPresent. CIMI has recently decided to combine these classes and rename it PresenceContext, as represented here.">
 		name = <"PresenceContext">
 		ancestors = <"AssertionContext", ...>
 		properties = <
 			["verificationStatus"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Whether an assessment has been confirmed by testing or observation.">
+				documentation = <"Whether an assessment has been confirmed by testing or observation.
+
+					CIMI Alignment: This attribute corresponds to FindingContext.status, but has been defined to align with FHIR.">
 				name = <"verificationStatus">
 				type = <"VerificationStatus">
 				is_mandatory = <True>
@@ -239,24 +264,29 @@ class_definitions = <
 			>
 			["onset"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"The beginning or first appearance of a mental or physical disorder.
-					This attribute aligns with FHIR Condition.onset, and with dateOfOnset and ageAtOnset in CIMI Version 0.0.4 but includes additional datatypes corresponding to FHIR">
+
+					CIMI Alignment: This attribute aligns with FHIR Condition.onset and with dateOfOnset and ageAtOnset in CIMI V0.0.4, but includes additional datatypes corresponding to FHIR">
 				name = <"onset">
 				type = <"Onset">
 			>
 			["abatement"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The end of the condition, either remission or resolution. This attribute corresponds to dateAbated and hasAbated in CIMI Version 0.0.4, but includes additional datatypes corresponding to FHIR">
+				documentation = <"The end of the condition, either remission or resolution. This attribute corresponds to dateAbated and hasAbated in CIMI V0.0.4, but includes additional datatypes corresponding to FHIR">
 				name = <"abatement">
 				type = <"Abatement">
 			>
 			["certainty"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The degree of confidence in a conclusion or assertion.">
+				documentation = <"The degree of confidence in a conclusion or assertion.
+
+					CIMI Alignment: This attribute aligns with KnownOrSuspectedPresent.certainty in CIMI V0.0.4, but with the recent realignment of CIMI classes, this attribute is attached to the correct class, PresenceContext.">
 				name = <"certainty">
 				type = <"Certainty">
 			>
 		>
 	>
 	["VerificationStatus"] = <
-		documentation = <"Whether an assessment has been confirmed by testing or observation.">
+		documentation = <"Whether an assessment has been confirmed by testing or observation.
+
+			CIMI Alignment: This attribute corresponds to FindingContext.status, but has been defined to align with FHIR.">
 		name = <"VerificationStatus">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -268,13 +298,10 @@ class_definitions = <
 			>
 		>
 	>
-	["EvaluationResultContext"] = <
-		documentation = <"The parent class of contexts that can associate with EvaluationResultTopic and its subclasses.">
-		name = <"EvaluationResultContext">
-		ancestors = <"FindingContext", ...>
-	>
 	["Certainty"] = <
-		documentation = <"The degree of confidence in a conclusion or assertion.">
+		documentation = <"The degree of confidence in a conclusion or assertion.
+
+			CIMI Alignment: This attribute aligns with KnownOrSuspectedPresent.certainty in CIMI V0.0.4, but with the recent realignment of CIMI classes, this attribute is attached to the correct class, PresenceContext.">
 		name = <"Certainty">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -289,35 +316,43 @@ class_definitions = <
 	["RecordedContext"] = <
 		documentation = <"Context for an evaluation result, used to indicate an evaluation has been made.
 
-			For example, measurement of blood pressure that has been made simply exists (although the value can be present or absent, accurate or inaccurate). The RecordedContext indicates the information presented stands on its own as presented. It can also apply to a clinical notes.
+			For example, measurement of blood pressure that has been made simply exists (although the value can be present or absent, accurate or inaccurate). The RecordedContext indicates the information presented stands on its own as presented. It can also apply to clinical notes.
 
-			The RecordedContext class did not exist in CIMI Version 0.0.4, but CIMI is the process of adding it. That change is anticipated here.">
+			CIMI Alignment: The RecordedContext class did not exist in CIMI V0.0.4, but CIMI has recently added it.">
 		name = <"RecordedContext">
 		ancestors = <"EvaluationResultContext", ...>
 		properties = <
 			["findingStatus"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Indicates whether the finding is preliminary, amended, final, etc..">
+				documentation = <"Indicates whether the finding is preliminary, amended, final, etc..
+
+					CIMI Alignment: This class corresponds to FindingContext.status, but has been aligned to FHIR. The value set binding is required by FHIR.">
 				name = <"findingStatus">
 				type = <"FindingStatus">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
 			["exceptionValue"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Reason that a value associated with a test or other finding is missing.">
+				documentation = <"Reason that a value associated with a test or other finding is missing.
+
+					CIMI Alignment: This attribute corresponds to EvaluationResultTopic.exceptionValue, but has been moved from topic to context because missing values are only relevant when they should be recorded, but are not. The value set binding extends the set of FHIR's required data absent values, with additional concepts from CIMI.">
 				name = <"exceptionValue">
 				type = <"ExceptionValue">
 			>
 			["relevantTime"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"The time or time period that the finding addresses.
 
-					The clinically relevant time is not necessarily when the information is gathered or when a test is carried out, but for example, when a specimen was collected, or the time period referred to by the question. Use a TimePeriod for a measurement or specimen collection continued over a significant period of time (e.g. 24 hour Urine Sodium).">
+					The clinically relevant time is not necessarily when the information is gathered or when a test is carried out, but for example, when a specimen was collected, or the time period referred to by the question. Use a TimePeriod for a measurement or specimen collection continued over a significant period of time (e.g. 24 hour Urine Sodium).
+
+					CIMI Alignment: This attribute has been added, since recorded values must have an associated time. The datatype has been chosen to align with FHIR.">
 				name = <"relevantTime">
 				type = <"RelevantTime">
 			>
 		>
 	>
 	["FindingStatus"] = <
-		documentation = <"Indicates whether the finding is preliminary, amended, final, etc..">
+		documentation = <"Indicates whether the finding is preliminary, amended, final, etc..
+
+			CIMI Alignment: This class corresponds to FindingContext.status, but has been aligned to FHIR. The value set binding is required by FHIR.">
 		name = <"FindingStatus">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -329,10 +364,27 @@ class_definitions = <
 			>
 		>
 	>
+	["ExceptionValue"] = <
+		documentation = <"Reason that a value associated with a test or other finding is missing.
+
+			CIMI Alignment: This attribute corresponds to EvaluationResultTopic.exceptionValue, but has been moved from topic to context because missing values are only relevant when they should be recorded, but are not. The value set binding extends the set of FHIR's required data absent values, with additional concepts from CIMI.">
+		name = <"ExceptionValue">
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
+				name = <"value">
+				type = <"CodeableConcept">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
 	["RelevantTime"] = <
 		documentation = <"The time or time period that the finding addresses.
 
-			The clinically relevant time is not necessarily when the information is gathered or when a test is carried out, but for example, when a specimen was collected, or the time period referred to by the question. Use a TimePeriod for a measurement or specimen collection continued over a significant period of time (e.g. 24 hour Urine Sodium).">
+			The clinically relevant time is not necessarily when the information is gathered or when a test is carried out, but for example, when a specimen was collected, or the time period referred to by the question. Use a TimePeriod for a measurement or specimen collection continued over a significant period of time (e.g. 24 hour Urine Sodium).
+
+			CIMI Alignment: This attribute has been added, since recorded values must have an associated time. The datatype has been chosen to align with FHIR.">
 		name = <"RelevantTime">
 		properties = <
 			["valueChoicedateTime"] = (P_BMM_SINGLE_PROPERTY) <
@@ -353,8 +405,50 @@ class_definitions = <
 			>
 		>
 	>
+	["FindingTopic"] = <
+		documentation = <"Base class - independent of context - for all kinds of determinations: questions/answers, conditions, observations, allergies, and other findings.
+
+			The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.
+
+			CIMI Alignment: In CIMI V0.0.4, FindingTopic has four attributes: result, description, multimedia, and intepretation. Here, result is represented by EvaluationResultTopic.Value and AssertionTopic.Value. Description and Multimedia have been omitted for brevity.">
+		name = <"FindingTopic">
+		ancestors = <"StatementTopic", ...>
+		properties = <
+			["findingMethod"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"The technique used to create the finding; for example, the specific imaging technique, lab test code, or assessment vehicle.
+
+					CIMI Alignment: In CIMI V0.0.4, this attribute was called 'method'. The value set binding reflects CIMI's preference for LOINC codes.">
+				name = <"findingMethod">
+				type = <"FindingMethod">
+			>
+			["interpretation"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A clinical interpretation of a finding.
+
+					CIMI Alignment: The value set binding has been chosen to align with FHIR. (Note: it is not clear if Interpretation belongs in FindingTopic, rather than a context class, but that is how CIMI has modeled it.)">
+				name = <"interpretation">
+				type = <"Interpretation">
+			>
+		>
+	>
+	["Interpretation"] = <
+		documentation = <"A clinical interpretation of a finding.
+
+			CIMI Alignment: The value set binding has been chosen to align with FHIR. (Note: it is not clear if Interpretation belongs in FindingTopic, rather than a context class, but that is how CIMI has modeled it.)">
+		name = <"Interpretation">
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
+				name = <"value">
+				type = <"CodeableConcept">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
 	["FindingMethod"] = <
-		documentation = <"The technique used to create the finding, for example, the specific imaging technical, lab test code, or assessment vehicle. In CIMI Version 0.0.4, this attribute is called 'method'.">
+		documentation = <"The technique used to create the finding; for example, the specific imaging technique, lab test code, or assessment vehicle.
+
+			CIMI Alignment: In CIMI V0.0.4, this attribute was called 'method'. The value set binding reflects CIMI's preference for LOINC codes.">
 		name = <"FindingMethod">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -366,14 +460,35 @@ class_definitions = <
 			>
 		>
 	>
+	["AssertionTopic"] = <
+		documentation = <"The base topic for conditions, allergies, adverse events, etc. These are things that are asserted to exist or not. The Value is interpreted in the context of the class; for an AdverseSensitivityToSubstance, the value is the substance; for a ConditionPresenceStatement, the Value represents the type of condition found.
+
+			CIMI Alignment: In CIMI V0.0.4, this class was called Assertion, but CIMI recently decided to change the name to AssertionTopic, as anticipated here. In CIMI V0.0.4, Assertion defines three attributes: dateAsserted, verificationStatus, and findingMethod. VerificationStatus more properly only applies in the PresenceContext context, and can be found there. FindingMethod more properly belongs in FindingTopic, and can be found there.">
+		name = <"AssertionTopic">
+		ancestors = <"FindingTopic", ...>
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
+				name = <"value">
+				type = <"CodeableConcept">
+			>
+		>
+	>
 	["EvaluationResultTopic"] = <
-		documentation = <"The base class, independent of context for evaluations (measurements, tests, or questions) and a value containing the result (answer).
+		documentation = <"The base class, independent of context, for evaluations (measurements, tests, or questions) and a value containing the result (answer).
 
 			The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.
 
-			In CIMI Version 0.0.4, LaboratoryTestResult.specimen is 0..* but that cardinality makes it impossible to map to FHIR Observation, because Observation.specimen is 0..1. Therefore, the cardinality of Specimen is changed to 0..1 to be consistent with FHIR.
-
-			In CIMI Version 0.0.4, Findings (including EvaluationResult and LaboratoryTestResult) do not have related ('has-member') observations, nor components (sub-observations). These features of FHIR Observations were found to be very useful in modeling breast cancer pathology, and so they are included here. This represents a significant departure from the CIMI model.">
+			CIMI Alignment:
+			1) In CIMI  V0.0.4, LaboratoryTestResult.specimen is 0..* but that cardinality makes it impossible to map to FHIR Observation, where specimen is 0..1. The cardinality of Specimen has been changed to 0..1 to enable FHIR mapping.
+			2) In CIMI V0.0.4, Findings (including EvaluationResult and LaboratoryTestResult) do not have related ('has-member') observations, nor components (sub-observations). These features of FHIR Observations were found to be very useful in modeling breast cancer pathology, and are included here. This represents a significant departure from the CIMI model. CompoundClinicalStatement has not been used to represent panel-like findings, because of the complexity of mapping this class to FHIR.
+			3) In CIMI V0.0.4, allowable datatypes for result (aka Value) include EmbeddedContent,  GpsLocation,  Multimedia,  ParsableContent, and other types not allowed in a FHIR Observation. To make mapping feasible, the types of Value were restricted to only the allowable FHIR datatypes.
+			4) ExceptionValue has been moved to the RecordedContext, because it is only relevant when a value is supposed to be recorded, but is not.
+			5) The cardinality of FindingMethod has been changed from 0..* to 0..1 to make it possible to map to FHIR, where Observation.method is 0..1.
+			6) The class PhysicalEvaluationResult has been united with this class, and the body location (AnatomicalLocation) has been added to this class. This is because bodySite is part of Observation, and it cannot be profiled out of EvaluationResult and then re-included in PhysicalEvaluationResult.
+			7) The cardinality of AnatomicalLocation has been changed from 0..* to 0..1 to make it possible to map to FHIR, where Observation.bodySite is 0..1.
+			8) The attribute evaluationDate has been moved to RecordedContext, because it only applies to evaluations that have been done.
+			9) The attributes device and evaluationProcedure have been removed for brevity, since they are not used in the current IG.">
 		name = <"EvaluationResultTopic">
 		ancestors = <"FindingTopic", ...>
 		properties = <
@@ -385,16 +500,16 @@ class_definitions = <
 				cardinality = <|>=1|>
 			>
 			["anatomicalLocation"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces, for example, right elbow, or left ventricle of the heart.
+				documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces; for example, right elbow, or left ventricle of the heart.
 
-					Note: In CIMI Version 0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here. This class corresponds to that CIMI reference model class, but it would be defined in a CIMI archetype, because it involves value set bindings on each of the attributes.">
+					CIMI Alignment: In CIMI V0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here.">
 				name = <"anatomicalLocation">
 				type = <"AnatomicalLocation">
 			>
 			["specimen"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Sample for analysis.
+				documentation = <"A specimen is a substance, physical object, or collection of objects, that the laboratory considers a single discrete, uniquely identified unit that is the subject of one or more steps in the laboratory workflow. A specimen may include multiple physical pieces as long as they are considered a single unit within the laboratory workflow. A specimen results from one to many specimen collection procedures, and may be contained in multiple specimen containers. Specimen may have one or more processing activities.
 
-					NOTE: This class has been cut down to separate it from other parts of the reference model that are not relevant to the current oncology ballot.">
+					CIMI Alignment: This class has been cut down to parts relevant to the current oncology ballot. The attribute parentSpecimenIdentifier has been changed from an Identifier to a reference to a Specimen, to make it possible to map to FHIR.">
 				name = <"specimen">
 				type = <"Specimen">
 			>
@@ -403,13 +518,8 @@ class_definitions = <
 				name = <"deltaFlag">
 				type = <"DeltaFlag">
 			>
-			["interpretation"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A clinical interpretation of a finding.">
-				name = <"interpretation">
-				type = <"Interpretation">
-			>
 			["precondition"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A description of the conditions or context of an observation, for example, under sedation, fasting or post-exercise.
+				documentation = <"A description of the conditions or context of an observation; for example, under sedation, fasting or post-exercise.
 
 					Body position and body site are also qualifiers, but handled separately. A qualifier cannot modify the measurement type; for example, a fasting blood sugar is still a blood sugar.">
 				name = <"precondition">
@@ -429,17 +539,6 @@ class_definitions = <
 				name = <"evaluationComponent">
 				type = <"EvaluationComponent">
 				cardinality = <|>=0|>
-			>
-			["members"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Members represent the elements of a group of a related but independent evaluations.
-
-					Examples are the measurements that compose a complete blood count (CBC), or the elements of a pathology report. Each member is an independent evaluation, but the grouping reflects a composite lab order, shared specimen, or a single report author. Typically the Category and Reason are not given for individual findings that are part of the panel, but rather given at the level of the panel itself.
-
-					CIMI V0.0.4 does not have this attribute.">
-				name = <"members">
-				type = <"Members">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
 			>
 			["valueChoiceQuantity"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"A quantity with units, whose value may be bounded from above or below, as defined in FHIR.
@@ -523,21 +622,8 @@ class_definitions = <
 			>
 		>
 	>
-	["Interpretation"] = <
-		documentation = <"A clinical interpretation of a finding.">
-		name = <"Interpretation">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
 	["Precondition"] = <
-		documentation = <"A description of the conditions or context of an observation, for example, under sedation, fasting or post-exercise.
+		documentation = <"A description of the conditions or context of an observation; for example, under sedation, fasting or post-exercise.
 
 			Body position and body site are also qualifiers, but handled separately. A qualifier cannot modify the measurement type; for example, a fasting blood sugar is still a blood sugar.">
 		name = <"Precondition">
@@ -625,12 +711,16 @@ class_definitions = <
 		name = <"EvaluationComponent">
 		properties = <
 			["exceptionValue"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Reason that a value associated with a test or other finding is missing.">
+				documentation = <"Reason that a value associated with a test or other finding is missing.
+
+					CIMI Alignment: This attribute corresponds to EvaluationResultTopic.exceptionValue, but has been moved from topic to context because missing values are only relevant when they should be recorded, but are not. The value set binding extends the set of FHIR's required data absent values, with additional concepts from CIMI.">
 				name = <"exceptionValue">
 				type = <"ExceptionValue">
 			>
 			["interpretation"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A clinical interpretation of a finding.">
+				documentation = <"A clinical interpretation of a finding.
+
+					CIMI Alignment: The value set binding has been chosen to align with FHIR. (Note: it is not clear if Interpretation belongs in FindingTopic, rather than a context class, but that is how CIMI has modeled it.)">
 				name = <"interpretation">
 				type = <"Interpretation">
 			>
@@ -702,51 +792,50 @@ class_definitions = <
 			>
 		>
 	>
-	["Members"] = <
-		documentation = <"Members represent the elements of a group of a related but independent evaluations.
+	["ConditionTopic"] = <
+		documentation = <"Representation of a condition, independent of context of being present, absent, risk, expectation etc. 'Condition' is interpreted broadly to include disorder, abnormality, problem, injury, complaint, functionality, concern, illness, disease, ailment, sickness, affliction, upset, difficulty, disorder, symptom, etc.
 
-			Examples are the measurements that compose a complete blood count (CBC), or the elements of a pathology report. Each member is an independent evaluation, but the grouping reflects a composite lab order, shared specimen, or a single report author. Typically the Category and Reason are not given for individual findings that are part of the panel, but rather given at the level of the panel itself.
+			The value set binding of Value is required to map to US-Core. The value set binding of Category is preferred in US-Core.
 
-			CIMI V0.0.4 does not have this attribute.">
-		name = <"Members">
+			CIMI Alignment: In CIMI V0.0.4, this class was called ConditionAssertion, but CIMI has recently changed it to ConditionTopic. ConditionAssertion had properties associated with the presence of the condition, including severity, dueTo, diseasePhase, and more. In the current logical model, properties associated with condition occurrence have been moved to ConditionPresenceContext.">
+		name = <"ConditionTopic">
+		ancestors = <"AssertionTopic", ...>
 		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The base class, independent of context for evaluations (measurements, tests, or questions) and a value containing the result (answer).
+			["category"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A class or division of people or things having particular shared characteristics">
+				name = <"category">
+				type = <"Category">
+				is_mandatory = <True>
+				cardinality = <|>=1|>
+			>
+			["anatomicalLocation"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces; for example, right elbow, or left ventricle of the heart.
 
-					The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.
-
-					In CIMI Version 0.0.4, LaboratoryTestResult.specimen is 0..* but that cardinality makes it impossible to map to FHIR Observation, because Observation.specimen is 0..1. Therefore, the cardinality of Specimen is changed to 0..1 to be consistent with FHIR.
-
-					In CIMI Version 0.0.4, Findings (including EvaluationResult and LaboratoryTestResult) do not have related ('has-member') observations, nor components (sub-observations). These features of FHIR Observations were found to be very useful in modeling breast cancer pathology, and so they are included here. This represents a significant departure from the CIMI model.">
-				name = <"value">
-				type = <"EvaluationResultTopic">
+					CIMI Alignment: In CIMI V0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here.">
+				name = <"anatomicalLocation">
+				type = <"AnatomicalLocation">
 				cardinality = <|>=0|>
 			>
 		>
 	>
-	["EvaluationResultRecorded"] = <
-		documentation = <"Represents the result of evaluations (measurements, tests, or questions) that have been performed.
+	["ClinicalStatus"] = <
+		documentation = <"A flag indicating whether the condition is active or inactive, recurring, in remission, or resolved (as of the last update of the Condition).
 
-			EvaluationResultRecorded has a value representing the result (answer), or an ExceptionValue indicating why the value is not present. The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.">
-		name = <"EvaluationResultRecorded">
-		ancestors = <"EvaluationResultTopic", ...>
+			CIMI Alignment: This attribute corresponds to FindingContext.status, but has been changed to better align with FHIR.">
+		name = <"ClinicalStatus">
 		properties = <
-			["recordedContext"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Context for an evaluation result, used to indicate an evaluation has been made.
-
-					For example, measurement of blood pressure that has been made simply exists (although the value can be present or absent, accurate or inaccurate). The RecordedContext indicates the information presented stands on its own as presented. It can also apply to a clinical notes.
-
-					The RecordedContext class did not exist in CIMI Version 0.0.4, but CIMI is the process of adding it. That change is anticipated here.">
-				name = <"recordedContext">
-				type = <"RecordedContext">
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: code)">
+				name = <"value">
+				type = <"code">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
 		>
 	>
-	["ExceptionValue"] = <
-		documentation = <"Reason that a value associated with a test or other finding is missing.">
-		name = <"ExceptionValue">
+	["Severity"] = <
+		documentation = <"Degree of harshness or extent of a symptom, disorder, or condition.">
+		name = <"Severity">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
@@ -757,22 +846,100 @@ class_definitions = <
 			>
 		>
 	>
-	["LaboratoryTestResultRecorded"] = <
-		documentation = <"Measurement resulting from a laboratory analysis.">
-		name = <"LaboratoryTestResultRecorded">
-		ancestors = <"EvaluationResultRecorded", ...>
+	["Criticality"] = <
+		documentation = <"The potential clinical harm associated with a condition. When the worst case result is assessed to have a life-threatening or organ system threatening potential, it is considered to be of high criticality.">
+		name = <"Criticality">
 		properties = <
-			["diagnosticService"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.">
-				name = <"diagnosticService">
-				type = <"DiagnosticService">
-				cardinality = <|>=0|>
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: code)">
+				name = <"value">
+				type = <"code">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
 			>
 		>
 	>
-	["DiagnosticService"] = <
-		documentation = <"A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.">
-		name = <"DiagnosticService">
+	["ConditionPresenceContext"] = <
+		documentation = <"The context for a condition that is known, suspected, or possibly present.
+
+			CIMI Alignment: In CIMI V0.0.4, this class was called AssertionKnownOrSuspectedPresent. The corresponding CIMI class is ungoing a name change to include the word 'StatementContext' and remove the word 'Assertion'. The presence of terminology bindings (necessary to align with FHIR clinicalStatus, severity, and criticality) means that this class cannot be defined entirely within the CIMI reference model. The constraints could only exist in an archetype derived from the reference model class. The logical model here represents both the class structure and the terminology bindings.">
+		name = <"ConditionPresenceContext">
+		ancestors = <"PresenceContext", ...>
+		properties = <
+			["clinicalStatus"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A flag indicating whether the condition is active or inactive, recurring, in remission, or resolved (as of the last update of the Condition).
+
+					CIMI Alignment: This attribute corresponds to FindingContext.status, but has been changed to better align with FHIR.">
+				name = <"clinicalStatus">
+				type = <"ClinicalStatus">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["presentOnAdmission"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"If the problem or condition existed before the current episode of care.">
+				name = <"presentOnAdmission">
+				type = <"PresentOnAdmission">
+			>
+			["severity"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Degree of harshness or extent of a symptom, disorder, or condition.">
+				name = <"severity">
+				type = <"Severity">
+			>
+			["criticality"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"The potential clinical harm associated with a condition. When the worst case result is assessed to have a life-threatening or organ system threatening potential, it is considered to be of high criticality.">
+				name = <"criticality">
+				type = <"Criticality">
+			>
+		>
+	>
+	["Onset"] = <
+		documentation = <"The beginning or first appearance of a mental or physical disorder.
+
+			CIMI Alignment: This attribute aligns with FHIR Condition.onset and with dateOfOnset and ageAtOnset in CIMI V0.0.4, but includes additional datatypes corresponding to FHIR">
+		name = <"Onset">
+		properties = <
+			["valueChoicedateTime"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: dateTime)">
+				name = <"valueChoicedateTime">
+				type = <"dateTime">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceAge"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"How long something has existed in time.">
+				name = <"valueChoiceAge">
+				type = <"Age">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceTimePeriod"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A period of time defined by a start and end time, date, or year.
+
+					If the start element is missing, the start of the period is not known. If the end element is missing, it means that the period is ongoing, or the start may be in the past, and the end date in the future, which means that period is expected/planned to end at the specified time. The end value includes any matching date/time. For example, the period 2011-05-23 to 2011-05-27 includes all the times from the start of the 23rd May through to the end of the 27th of May.">
+				name = <"valueChoiceTimePeriod">
+				type = <"TimePeriod">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceRange"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"An interval defined by a quantitative upper and/or lower bound. One of the two bounds must be specified, and the lower bound must be less than the upper bound. When Quantities are specified, the units of measure must be the same.">
+				name = <"valueChoiceRange">
+				type = <"Range">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoicestring"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: string)">
+				name = <"valueChoicestring">
+				type = <"string">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
+	["PresentOnAdmission"] = <
+		documentation = <"If the problem or condition existed before the current episode of care.">
+		name = <"PresentOnAdmission">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
@@ -783,26 +950,92 @@ class_definitions = <
 			>
 		>
 	>
-	["SimplifiedLaboratoryTestResultRecorded"] = <
-		documentation = <"The usual case for a test result from a pathology lab, based on a specimen taken from a patient. Note that the body site is not explicit here; it is part of the specimen resource associated with the lab result.">
-		name = <"SimplifiedLaboratoryTestResultRecorded">
-		ancestors = <"LaboratoryTestResultRecorded", ...>
-	>
-	["BodyStructureTopic"] = <
-		documentation = <"Presence (or absence) of a distinct anatomical or pathological morphological feature or organizational pattern, acquired or innate. Examples include tissue types, tumors, and wounds.">
-		name = <"BodyStructureTopic">
-		ancestors = <"EvaluationResultTopic", ...>
+	["Abatement"] = <
+		documentation = <"The end of the condition, either remission or resolution. This attribute corresponds to dateAbated and hasAbated in CIMI V0.0.4, but includes additional datatypes corresponding to FHIR">
+		name = <"Abatement">
 		properties = <
-			["morphology"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The kind of structure being represented. This can define both normal and abnormal morphologies.">
-				name = <"morphology">
-				type = <"Morphology">
+			["valueChoicedateTime"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: dateTime)">
+				name = <"valueChoicedateTime">
+				type = <"dateTime">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceAge"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"How long something has existed in time.">
+				name = <"valueChoiceAge">
+				type = <"Age">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceboolean"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: boolean)">
+				name = <"valueChoiceboolean">
+				type = <"boolean">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceTimePeriod"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A period of time defined by a start and end time, date, or year.
+
+					If the start element is missing, the start of the period is not known. If the end element is missing, it means that the period is ongoing, or the start may be in the past, and the end date in the future, which means that period is expected/planned to end at the specified time. The end value includes any matching date/time. For example, the period 2011-05-23 to 2011-05-27 includes all the times from the start of the 23rd May through to the end of the 27th of May.">
+				name = <"valueChoiceTimePeriod">
+				type = <"TimePeriod">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceRange"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"An interval defined by a quantitative upper and/or lower bound. One of the two bounds must be specified, and the lower bound must be less than the upper bound. When Quantities are specified, the units of measure must be the same.">
+				name = <"valueChoiceRange">
+				type = <"Range">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoicestring"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: string)">
+				name = <"valueChoicestring">
+				type = <"string">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
 			>
 		>
 	>
-	["Morphology"] = <
-		documentation = <"The kind of structure being represented. This can define both normal and abnormal morphologies.">
-		name = <"Morphology">
+	["Entity"] = <
+		documentation = <"Root class for entities such as people, organizations, and devices that have a separately identifiable existence.
+
+			CIMI Alignment: In CIMI V0.0.4, Entity was a subclass of Party. Party is part of CIMI's participation model, which is undergoing review and revision. Rather than introducing the complexity of the CIMI participation model, which has little relevance to breast cancer profiles and is undergoing revision anyway, the Party class has been omitted.">
+		name = <"Entity">
+		ancestors = <"Locatable", ...>
+	>
+	["AnatomicalLocation"] = <
+		documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces; for example, right elbow, or left ventricle of the heart.
+
+			CIMI Alignment: In CIMI V0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here.">
+		name = <"AnatomicalLocation">
+		ancestors = <"Entity", ...>
+		properties = <
+			["laterality"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Anatomical location or specimen further detailing the side(s) of interest.">
+				name = <"laterality">
+				type = <"Laterality">
+			>
+			["anatomicalDirection"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Anatomical location or specimen further detailing directionality.">
+				name = <"anatomicalDirection">
+				type = <"AnatomicalDirection">
+			>
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
+				name = <"value">
+				type = <"CodeableConcept">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
+	["Laterality"] = <
+		documentation = <"Anatomical location or specimen further detailing the side(s) of interest.">
+		name = <"Laterality">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
@@ -813,21 +1046,128 @@ class_definitions = <
 			>
 		>
 	>
-	["BodyStructurePresent"] = <
-		documentation = <"Presence of a distinct anatomical or pathological morphological feature or organizational pattern, acquired or innate.
-
-			Examples include tissue types, tumors, and wounds. Body structures are continuants (objects that exist over a period of time) that allow observations of the same body structure to be related to be tracked over time.">
-		name = <"BodyStructurePresent">
-		ancestors = <"BodyStructureTopic", ...>
+	["AnatomicalDirection"] = <
+		documentation = <"Anatomical location or specimen further detailing directionality.">
+		name = <"AnatomicalDirection">
 		properties = <
-			["presenceContext"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PresenceContext indicates the finding in question exists or is present to some level of certainty.
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
+				name = <"value">
+				type = <"CodeableConcept">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
+	["Specimen"] = <
+		documentation = <"A specimen is a substance, physical object, or collection of objects, that the laboratory considers a single discrete, uniquely identified unit that is the subject of one or more steps in the laboratory workflow. A specimen may include multiple physical pieces as long as they are considered a single unit within the laboratory workflow. A specimen results from one to many specimen collection procedures, and may be contained in multiple specimen containers. Specimen may have one or more processing activities.
 
-					For example, if the finding involves a myocardial infarction, the presence context implies that cardiac arrest has (or may have) taken place. Note that the name Presence is used rather than Present to prevent confusion with the temporal meaning of present.
+			CIMI Alignment: This class has been cut down to parts relevant to the current oncology ballot. The attribute parentSpecimenIdentifier has been changed from an Identifier to a reference to a Specimen, to make it possible to map to FHIR.">
+		name = <"Specimen">
+		ancestors = <"Entity", ...>
+		properties = <
+			["type"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"The most specific code (lowest level term) describing the kind or sort of thing being represented.">
+				name = <"type">
+				type = <"Type">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["sourceSpecimen"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Identifier for the source specimen from which this specimen was derived.
 
-					In CIMI Version 0.0.4, there were two classes, KnownOrSuspectedPresent and AssertionKnownOrSuspectedPresent. CIMI has decided to combine these classes and rename them to PresenceContext, as represented here.">
-				name = <"presenceContext">
-				type = <"PresenceContext">
+					CIMI Alignment: In CIMI V0.0.4, this attribute is called parentSpecimenIdentifier (datatype Identifier). The corresponding element in FHIR (Specimen.parent) is type ref(Specimen). It is impossible to map Idenfier to Specimen, so the datatype of this element has been changed to make the mapping feasible.">
+				name = <"sourceSpecimen">
+				type = <"SourceSpecimen">
+			>
+			["receivedTime"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Time received by accepting facility or unit.">
+				name = <"receivedTime">
+				type = <"ReceivedTime">
+			>
+			["collectionTime"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"When the sample was obtained, as a specific time or time period.
+
+					CIMI Alignment: Specimen collection time seems to be missing in CIMI V0.0.4. The time may be in the CollectionProcedure, but if the specimen collection time is recorded in Performance.Attribution (a list of actions), it would be nearly impossible to create a mapping.">
+				name = <"collectionTime">
+				type = <"CollectionTime">
+			>
+			["collectionMethod"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"How the specimen was obtained.">
+				name = <"collectionMethod">
+				type = <"CollectionMethod">
+			>
+			["collectionSite"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"The body site where specimen was collected">
+				name = <"collectionSite">
+				type = <"CollectionSite">
+			>
+		>
+	>
+	["SourceSpecimen"] = <
+		documentation = <"Identifier for the source specimen from which this specimen was derived.
+
+			CIMI Alignment: In CIMI V0.0.4, this attribute is called parentSpecimenIdentifier (datatype Identifier). The corresponding element in FHIR (Specimen.parent) is type ref(Specimen). It is impossible to map Idenfier to Specimen, so the datatype of this element has been changed to make the mapping feasible.">
+		name = <"SourceSpecimen">
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A specimen is a substance, physical object, or collection of objects, that the laboratory considers a single discrete, uniquely identified unit that is the subject of one or more steps in the laboratory workflow. A specimen may include multiple physical pieces as long as they are considered a single unit within the laboratory workflow. A specimen results from one to many specimen collection procedures, and may be contained in multiple specimen containers. Specimen may have one or more processing activities.
+
+					CIMI Alignment: This class has been cut down to parts relevant to the current oncology ballot. The attribute parentSpecimenIdentifier has been changed from an Identifier to a reference to a Specimen, to make it possible to map to FHIR.">
+				name = <"value">
+				type = <"Specimen">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
+	["CollectionTime"] = <
+		documentation = <"When the sample was obtained, as a specific time or time period.
+
+			CIMI Alignment: Specimen collection time seems to be missing in CIMI V0.0.4. The time may be in the CollectionProcedure, but if the specimen collection time is recorded in Performance.Attribution (a list of actions), it would be nearly impossible to create a mapping.">
+		name = <"CollectionTime">
+		properties = <
+			["valueChoicedateTime"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"PrimitiveValue (original type: dateTime)">
+				name = <"valueChoicedateTime">
+				type = <"dateTime">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+			["valueChoiceTimePeriod"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A period of time defined by a start and end time, date, or year.
+
+					If the start element is missing, the start of the period is not known. If the end element is missing, it means that the period is ongoing, or the start may be in the past, and the end date in the future, which means that period is expected/planned to end at the specified time. The end value includes any matching date/time. For example, the period 2011-05-23 to 2011-05-27 includes all the times from the start of the 23rd May through to the end of the 27th of May.">
+				name = <"valueChoiceTimePeriod">
+				type = <"TimePeriod">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
+	["CollectionMethod"] = <
+		documentation = <"How the specimen was obtained.">
+		name = <"CollectionMethod">
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
+				name = <"value">
+				type = <"CodeableConcept">
+				is_mandatory = <True>
+				cardinality = <|1..1|>
+			>
+		>
+	>
+	["CollectionSite"] = <
+		documentation = <"The body site where specimen was collected">
+		name = <"CollectionSite">
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces; for example, right elbow, or left ventricle of the heart.
+
+					CIMI Alignment: In CIMI V0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here.">
+				name = <"value">
+				type = <"AnatomicalLocation">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
@@ -1187,46 +1527,58 @@ class_definitions = <
 			>
 		>
 	>
-	["ConditionTopic"] = <
-		documentation = <"Representation of a condition, independent of context of being present, absent, risk, expectation etc. 'Condition' is interpreted broadly to include disorder, abnormality, problem, injury, complaint, functionality, concern, illness, disease, ailment, sickness, affliction, upset, difficulty, disorder, symptom, etc.
+	["EvaluationResultRecorded"] = <
+		documentation = <"Represents the result of evaluations (measurements, tests, or questions) that have been performed.
 
-			In CIMI Version 0.0.4, the corresponding reference model class was called ConditionAssertion. The CIMI name is being changed to ConditionTopic (perhaps ConditionAssertionTopic), as anticipated here. In CIMI Version 0.0.4, the ConditionAssertion has properties associated with the presence of the condition, including severity, dueTo, diseasePhase, and more. In the current logical model, the properties associated with the occurrence of a condition have been placed (more appropriately) with ConditionPresenceContext.
-
-			The presence of terminology bindings (necessary to align with FHIR Condition.category and enforce the extensible binding in US Core of Condition.code) means that this class cannot be defined entirely within the CIMI reference model. The constraints could only exist in an archetype derived from the reference model class. The logical model here represents both the class structure and the terminology bindings.">
-		name = <"ConditionTopic">
-		ancestors = <"AssertionTopic", ...>
+			EvaluationResultRecorded has a value representing the result (answer), or an ExceptionValue indicating why the value is not present. The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.">
+		name = <"EvaluationResultRecorded">
+		ancestors = <"ClinicalStatement", ...>
 		properties = <
-			["category"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A class or division of people or things having particular shared characteristics">
-				name = <"category">
-				type = <"Category">
-				is_mandatory = <True>
-				cardinality = <|>=1|>
+			["members"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Members represent the elements of a group of a related but independent evaluations.
+
+					Examples are the measurements that compose a complete blood count (CBC), or the elements of a pathology report. Each member is an independent evaluation, but the grouping reflects a composite lab order, shared specimen, or a single report author. Typically the Category and Reason are not given for individual findings that are part of the panel, but rather given at the level of the panel itself. Although the proper place to define Members this might be in EvaluationResultTopic, it cannot be defined there because the value references EvaluationResultRecorded, which is a clinical statement class.
+
+					CIMI Alignment: CIMI V0.0.4 does not have this attribute and uses CompoundClinicalStatement to create panels. Compared to having a separate class, the current representation closer alignment with FHIR and greater flexibility (related observations can be added to any observation).">
+				name = <"members">
+				type = <"Members">
 			>
-			["anatomicalLocationOrCode"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A body site entity or a body site code.">
-				name = <"anatomicalLocationOrCode">
-				type = <"AnatomicalLocationOrCode">
+		>
+	>
+	["Members"] = <
+		documentation = <"Members represent the elements of a group of a related but independent evaluations.
+
+			Examples are the measurements that compose a complete blood count (CBC), or the elements of a pathology report. Each member is an independent evaluation, but the grouping reflects a composite lab order, shared specimen, or a single report author. Typically the Category and Reason are not given for individual findings that are part of the panel, but rather given at the level of the panel itself. Although the proper place to define Members this might be in EvaluationResultTopic, it cannot be defined there because the value references EvaluationResultRecorded, which is a clinical statement class.
+
+			CIMI Alignment: CIMI V0.0.4 does not have this attribute and uses CompoundClinicalStatement to create panels. Compared to having a separate class, the current representation closer alignment with FHIR and greater flexibility (related observations can be added to any observation).">
+		name = <"Members">
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Represents the result of evaluations (measurements, tests, or questions) that have been performed.
+
+					EvaluationResultRecorded has a value representing the result (answer), or an ExceptionValue indicating why the value is not present. The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.">
+				name = <"value">
+				type = <"EvaluationResultRecorded">
 				cardinality = <|>=0|>
 			>
 		>
 	>
-	["ClinicalStatus"] = <
-		documentation = <"A flag indicating whether the condition is active or inactive, recurring, in remission, or resolved (as of the last update of the Condition).">
-		name = <"ClinicalStatus">
+	["LaboratoryTestResultRecorded"] = <
+		documentation = <"Measurement resulting from a laboratory analysis. The category is fixed to 'laboratory' to align with US-Core.">
+		name = <"LaboratoryTestResultRecorded">
+		ancestors = <"EvaluationResultRecorded", ...>
 		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: code)">
-				name = <"value">
-				type = <"code">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
+			["diagnosticService"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.">
+				name = <"diagnosticService">
+				type = <"DiagnosticService">
+				cardinality = <|>=0|>
 			>
 		>
 	>
-	["Severity"] = <
-		documentation = <"Degree of harshness or extent of a symptom, disorder, or condition.">
-		name = <"Severity">
+	["DiagnosticService"] = <
+		documentation = <"A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.">
+		name = <"DiagnosticService">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
@@ -1237,163 +1589,24 @@ class_definitions = <
 			>
 		>
 	>
-	["Criticality"] = <
-		documentation = <"The potential clinical harm associated with a condition. When the worst case result is assessed to have a life-threatening or organ system threatening potential, it is considered to be of high criticality.">
-		name = <"Criticality">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: code)">
-				name = <"value">
-				type = <"code">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
+	["SimplifiedLaboratoryTestResultRecorded"] = <
+		documentation = <"The usual case for a test result from a pathology lab, based on a specimen taken from a patient. Note that the body site is not explicit here; it is part of the specimen resource associated with the lab result.">
+		name = <"SimplifiedLaboratoryTestResultRecorded">
+		ancestors = <"LaboratoryTestResultRecorded", ...>
 	>
-	["ConditionPresenceContext"] = <
-		documentation = <"The context for a condition that is known, suspected, or possibly present.
+	["ConditionPresenceStatement"] = <
+		documentation = <"A condition that is or may be present in a subject. 'Condition' is interpreted broadly and could be a disorder, abnormality, problem, injury, complaint, functionality, illness, disease, ailment, sickness, affliction, upset, difficulty, disorder, symptom, worry, or trouble.
 
-			In CIMI Version 0.0.4, this class was called AssertionKnownOrSuspectedPresent. The corresponding CIMI class is ungoing a name change to include the word 'StatementContext' and remove the word 'Assertion'.
-
-			The presence of terminology bindings (necessary to align with FHIR clinicalStatus, severity, and criticality) means that this class cannot be defined entirely within the CIMI reference model. The constraints could only exist in an archetype derived from the reference model class. The logical model here represents both the class structure and the terminology bindings.">
-		name = <"ConditionPresenceContext">
-		ancestors = <"PresenceContext", ...>
+			In CIMI terms, it is an archetype of ClinicalStatement that combines a ConditionTopic with the ConditionPresenceContext context. The core attributes of ClinicalStatement are not included here because of mapping difficulties to FHIR DomainResource.">
+		name = <"ConditionPresenceStatement">
+		ancestors = <"ClinicalStatement", ...>
 		properties = <
-			["clinicalStatus"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A flag indicating whether the condition is active or inactive, recurring, in remission, or resolved (as of the last update of the Condition).">
-				name = <"clinicalStatus">
-				type = <"ClinicalStatus">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["presentOnAdmission"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"If the problem or condition existed before the current episode of care.">
-				name = <"presentOnAdmission">
-				type = <"PresentOnAdmission">
-			>
-			["severity"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Degree of harshness or extent of a symptom, disorder, or condition.">
-				name = <"severity">
-				type = <"Severity">
-			>
-			["criticality"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The potential clinical harm associated with a condition. When the worst case result is assessed to have a life-threatening or organ system threatening potential, it is considered to be of high criticality.">
-				name = <"criticality">
-				type = <"Criticality">
-			>
 			["stage"] = (P_BMM_SINGLE_PROPERTY) <
 				documentation = <"The relative advancement in the course of a disease. The value is the summary stage or stage group. StageDetail optionally contains the full staging information.
 
 					This attribute does not have a direct analogy in CIMI V0.0.4 (the closest being ConditionAssertion.diseasePhase), but is included here for consistency with FHIR and because staging is important in the context of breast cancer and cancer in general.">
 				name = <"stage">
 				type = <"Stage">
-			>
-		>
-	>
-	["Onset"] = <
-		documentation = <"The beginning or first appearance of a mental or physical disorder.
-			This attribute aligns with FHIR Condition.onset, and with dateOfOnset and ageAtOnset in CIMI Version 0.0.4 but includes additional datatypes corresponding to FHIR">
-		name = <"Onset">
-		properties = <
-			["valueChoicedateTime"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: dateTime)">
-				name = <"valueChoicedateTime">
-				type = <"dateTime">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceAge"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"How long something has existed in time.">
-				name = <"valueChoiceAge">
-				type = <"Age">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceTimePeriod"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A period of time defined by a start and end time, date, or year.
-
-					If the start element is missing, the start of the period is not known. If the end element is missing, it means that the period is ongoing, or the start may be in the past, and the end date in the future, which means that period is expected/planned to end at the specified time. The end value includes any matching date/time. For example, the period 2011-05-23 to 2011-05-27 includes all the times from the start of the 23rd May through to the end of the 27th of May.">
-				name = <"valueChoiceTimePeriod">
-				type = <"TimePeriod">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceRange"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"An interval defined by a quantitative upper and/or lower bound. One of the two bounds must be specified, and the lower bound must be less than the upper bound. When Quantities are specified, the units of measure must be the same.">
-				name = <"valueChoiceRange">
-				type = <"Range">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoicestring"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: string)">
-				name = <"valueChoicestring">
-				type = <"string">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["PresentOnAdmission"] = <
-		documentation = <"If the problem or condition existed before the current episode of care.">
-		name = <"PresentOnAdmission">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["Abatement"] = <
-		documentation = <"The end of the condition, either remission or resolution. This attribute corresponds to dateAbated and hasAbated in CIMI Version 0.0.4, but includes additional datatypes corresponding to FHIR">
-		name = <"Abatement">
-		properties = <
-			["valueChoicedateTime"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: dateTime)">
-				name = <"valueChoicedateTime">
-				type = <"dateTime">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceAge"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"How long something has existed in time.">
-				name = <"valueChoiceAge">
-				type = <"Age">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceboolean"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: boolean)">
-				name = <"valueChoiceboolean">
-				type = <"boolean">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceTimePeriod"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A period of time defined by a start and end time, date, or year.
-
-					If the start element is missing, the start of the period is not known. If the end element is missing, it means that the period is ongoing, or the start may be in the past, and the end date in the future, which means that period is expected/planned to end at the specified time. The end value includes any matching date/time. For example, the period 2011-05-23 to 2011-05-27 includes all the times from the start of the 23rd May through to the end of the 27th of May.">
-				name = <"valueChoiceTimePeriod">
-				type = <"TimePeriod">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceRange"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"An interval defined by a quantitative upper and/or lower bound. One of the two bounds must be specified, and the lower bound must be less than the upper bound. When Quantities are specified, the units of measure must be the same.">
-				name = <"valueChoiceRange">
-				type = <"Range">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoicestring"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: string)">
-				name = <"valueChoicestring">
-				type = <"string">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
 			>
 		>
 	>
@@ -1427,245 +1640,6 @@ class_definitions = <
 					EvaluationResultRecorded has a value representing the result (answer), or an ExceptionValue indicating why the value is not present. The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.">
 				name = <"value">
 				type = <"EvaluationResultRecorded">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["ConditionPresenceStatement"] = <
-		documentation = <"A condition that is or may be present in a subject. 'Condition' is interpreted broadly and could be a disorder, abnormality, problem, injury, complaint, functionality, illness, disease, ailment, sickness, affliction, upset, difficulty, disorder, symptom, worry, or trouble.
-
-			In CIMI terms, it is an archetype of ClinicalStatement that combines a ConditionTopic with the ConditionPresenceContext context. The core attributes of ClinicalStatement are not included here because of mapping difficulties to FHIR DomainResource.
-
-			In CIMI V0.0.4, this class would be represented as an archetype, specifically, a ClinicalStatement whose topic is ConditionAssertion and whose context is AssertionKnownOrSuspectedPresent.">
-		name = <"ConditionPresenceStatement">
-		ancestors = <"ConditionTopic", ...>
-		properties = <
-			["conditionPresenceContext"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The context for a condition that is known, suspected, or possibly present.
-
-					In CIMI Version 0.0.4, this class was called AssertionKnownOrSuspectedPresent. The corresponding CIMI class is ungoing a name change to include the word 'StatementContext' and remove the word 'Assertion'.
-
-					The presence of terminology bindings (necessary to align with FHIR clinicalStatus, severity, and criticality) means that this class cannot be defined entirely within the CIMI reference model. The constraints could only exist in an archetype derived from the reference model class. The logical model here represents both the class structure and the terminology bindings.">
-				name = <"conditionPresenceContext">
-				type = <"ConditionPresenceContext">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["Entity"] = <
-		documentation = <"Base class for human, material, and informational things. A non-material thing might be a goal or information relevant to health care, such as an image, consent form, or report. A material thing can be seen and touched, such as a device.
-
-			In CIMI V0.0.4, Entities were not stand-alone classes. However, this is currently being changed in CIMI, so in the future, CIMI entities will more closely correspond to the FHIR entity-like resources such as Organization, Location, Device, Substance, and the like. In order to map to FHIR and produce profiles for this ballot, this change has been anticipated.
-
-			Further, in CIMI V0.0.4, Entity was a subclass of Party. Party is part of CIMI's participation model that is currently undergoing review and revision. Rather than introducing the complexity the CIMI participation model, which has little relevance to the current ballot of cancer profiles and is undergoing revision anyway, the superclass Party has been omitted.">
-		name = <"Entity">
-		ancestors = <"Locatable", ...>
-	>
-	["AnatomicalLocation"] = <
-		documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces, for example, right elbow, or left ventricle of the heart.
-
-			Note: In CIMI Version 0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here. This class corresponds to that CIMI reference model class, but it would be defined in a CIMI archetype, because it involves value set bindings on each of the attributes.">
-		name = <"AnatomicalLocation">
-		ancestors = <"Entity", ...>
-		properties = <
-			["laterality"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Anatomical location or specimen further detailing the side(s) of interest.">
-				name = <"laterality">
-				type = <"Laterality">
-			>
-			["directionality"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Anatomical location or specimen further detailing directionality.
-					Note: In CIMI Version 0.0.4, this is called anatomicalDirection.">
-				name = <"directionality">
-				type = <"Directionality">
-			>
-			["portionTotality"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Further detail of the anatomical location or specimen detailing whether it includes the entire entity or only a part or portion. NOTE: This attribute is not part of CIMI. It was included because it further details an anatomical location or specimen, in Clinical Data Interchange Standards Consortium (CDISC) Study Data Tabulation Model (SDTM).">
-				name = <"portionTotality">
-				type = <"PortionTotality">
-			>
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["Laterality"] = <
-		documentation = <"Anatomical location or specimen further detailing the side(s) of interest.">
-		name = <"Laterality">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["Directionality"] = <
-		documentation = <"Anatomical location or specimen further detailing directionality.
-			Note: In CIMI Version 0.0.4, this is called anatomicalDirection.">
-		name = <"Directionality">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["PortionTotality"] = <
-		documentation = <"Further detail of the anatomical location or specimen detailing whether it includes the entire entity or only a part or portion. NOTE: This attribute is not part of CIMI. It was included because it further details an anatomical location or specimen, in Clinical Data Interchange Standards Consortium (CDISC) Study Data Tabulation Model (SDTM).">
-		name = <"PortionTotality">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["AnatomicalLocationOrCode"] = <
-		documentation = <"A body site entity or a body site code.">
-		name = <"AnatomicalLocationOrCode">
-		properties = <
-			["valueChoiceCodeableConcept"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"valueChoiceCodeableConcept">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceAnatomicalLocation"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces, for example, right elbow, or left ventricle of the heart.
-
-					Note: In CIMI Version 0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here. This class corresponds to that CIMI reference model class, but it would be defined in a CIMI archetype, because it involves value set bindings on each of the attributes.">
-				name = <"valueChoiceAnatomicalLocation">
-				type = <"AnatomicalLocation">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["Specimen"] = <
-		documentation = <"Sample for analysis.
-
-			NOTE: This class has been cut down to separate it from other parts of the reference model that are not relevant to the current oncology ballot.">
-		name = <"Specimen">
-		ancestors = <"Entity", ...>
-		properties = <
-			["type"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The most specific code (lowest level term) describing the kind or sort of thing being represented.">
-				name = <"type">
-				type = <"Type">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["sourceSpecimen"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Identifier for the source specimen from which this specimen was derived.
-
-					In CIMI V0.0.4, this attribute is called parentSpecimenIdentifier (datatype Identifier). The corresponding element in FHIR (Specimen.parent) is type ref(Specimen). It is impossible to map Idenfier to Specimen, so the datatype of this element has been changed to make the mapping feasible.">
-				name = <"sourceSpecimen">
-				type = <"SourceSpecimen">
-			>
-			["receivedTime"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Time received by accepting facility or unit.">
-				name = <"receivedTime">
-				type = <"ReceivedTime">
-			>
-			["collectionTime"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"When the sample was obtained, as a specific time or time period.
-
-					Specimen collection time seems to be missing in CIMI V0.0.4. Given that is not in Specimen, the next place to look is in the associated CollectionProcedure, specifically in the Performance context of the clinical statement representing that procedure. But there is no time found there, either, only a temporalContext (type Concept) and duration (not a point in time). If the specimen collection time is supposed to be recorded in Performance.Attribution (a list of actions), it would be nearly impossible to create a mapping.">
-				name = <"collectionTime">
-				type = <"CollectionTime">
-			>
-			["collectionMethod"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"How the specimen was obtained.">
-				name = <"collectionMethod">
-				type = <"CollectionMethod">
-			>
-			["collectionSite"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The body site where specimen was collected">
-				name = <"collectionSite">
-				type = <"CollectionSite">
-			>
-		>
-	>
-	["SourceSpecimen"] = <
-		documentation = <"Identifier for the source specimen from which this specimen was derived.
-
-			In CIMI V0.0.4, this attribute is called parentSpecimenIdentifier (datatype Identifier). The corresponding element in FHIR (Specimen.parent) is type ref(Specimen). It is impossible to map Idenfier to Specimen, so the datatype of this element has been changed to make the mapping feasible.">
-		name = <"SourceSpecimen">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Sample for analysis.
-
-					NOTE: This class has been cut down to separate it from other parts of the reference model that are not relevant to the current oncology ballot.">
-				name = <"value">
-				type = <"Specimen">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["CollectionTime"] = <
-		documentation = <"When the sample was obtained, as a specific time or time period.
-
-			Specimen collection time seems to be missing in CIMI V0.0.4. Given that is not in Specimen, the next place to look is in the associated CollectionProcedure, specifically in the Performance context of the clinical statement representing that procedure. But there is no time found there, either, only a temporalContext (type Concept) and duration (not a point in time). If the specimen collection time is supposed to be recorded in Performance.Attribution (a list of actions), it would be nearly impossible to create a mapping.">
-		name = <"CollectionTime">
-		properties = <
-			["valueChoicedateTime"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"PrimitiveValue (original type: dateTime)">
-				name = <"valueChoicedateTime">
-				type = <"dateTime">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-			["valueChoiceTimePeriod"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A period of time defined by a start and end time, date, or year.
-
-					If the start element is missing, the start of the period is not known. If the end element is missing, it means that the period is ongoing, or the start may be in the past, and the end date in the future, which means that period is expected/planned to end at the specified time. The end value includes any matching date/time. For example, the period 2011-05-23 to 2011-05-27 includes all the times from the start of the 23rd May through to the end of the 27th of May.">
-				name = <"valueChoiceTimePeriod">
-				type = <"TimePeriod">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["CollectionMethod"] = <
-		documentation = <"How the specimen was obtained.">
-		name = <"CollectionMethod">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
-				name = <"value">
-				type = <"CodeableConcept">
-				is_mandatory = <True>
-				cardinality = <|1..1|>
-			>
-		>
-	>
-	["CollectionSite"] = <
-		documentation = <"The body site where specimen was collected">
-		name = <"CollectionSite">
-		properties = <
-			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A location or structure in the body, including tissues, regions, cavities, and spaces, for example, right elbow, or left ventricle of the heart.
-
-					Note: In CIMI Version 0.0.4, AnatomicalLocation has no parent class. This appears to have been an oversight, and the parent should have been Entity, as modeled here. This class corresponds to that CIMI reference model class, but it would be defined in a CIMI archetype, because it involves value set bindings on each of the attributes.">
-				name = <"value">
-				type = <"AnatomicalLocation">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
@@ -1709,36 +1683,33 @@ class_definitions = <
 		ancestors = <"Specimen", ...>
 		properties = <
 			["coldIschemiaTime"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"The time between the chilling of a tissue or tissue sample and the time it is warmed.
-					NOTE: In CIMI Version 0.0.4, processing of a specimen is represented as an independent clinical statement involving a SpecimenProcessingTopic and PerformanceContext. The CIMI clinical statement would be mapped to FHIR as a Procedure. In this case, the procedure involves chilling the specimen (the key or code) and the duration of that procedure (corresponding to PerformanceContext.duration) would be interpreted as the cold ischemic time. The drawback of this would be that the information on cold ischemic time (necessary for interpreting results) would not travel with the specimen. To provide a cutpoint between this IG and the rest of CIMI, and to avoid unnecessary complexity, an extension was introduced.">
+				documentation = <"The time period between the chilling of a tissue or tissue sample and the time it is warmed.
+
+					CIMI Alignment: In CIMI Version 0.0.4, specimen processing is represented as a 'SpecimenProcessingPerformed' clinical statement, mapped to FHIR Procedure. However, specimen processing should actually map to Specimen.processing, part of the Specimen resource. It would be a difficult mapping exercise (beyond the scope of this IG) to express the mapping rule that any CIMI SpecimenProcessingPerformed clinical statement needs to mapped to FHIR by (1) finding the corresponding Specimen entity, and (2) mapping the content of (possibly multiple) SpecimenProcessingPerformed into the FHIR Specimen resource. To avoid this complexity, the breast cancer model expresses the cold ischemia time as an attribute of the BreastSpecimen rather than a separate procedure.">
 				name = <"coldIschemiaTime">
 				type = <"ColdIschemiaTime">
 			>
 		>
 	>
 	["ColdIschemiaTime"] = <
-		documentation = <"The time between the chilling of a tissue or tissue sample and the time it is warmed.
-			NOTE: In CIMI Version 0.0.4, processing of a specimen is represented as an independent clinical statement involving a SpecimenProcessingTopic and PerformanceContext. The CIMI clinical statement would be mapped to FHIR as a Procedure. In this case, the procedure involves chilling the specimen (the key or code) and the duration of that procedure (corresponding to PerformanceContext.duration) would be interpreted as the cold ischemic time. The drawback of this would be that the information on cold ischemic time (necessary for interpreting results) would not travel with the specimen. To provide a cutpoint between this IG and the rest of CIMI, and to avoid unnecessary complexity, an extension was introduced.">
+		documentation = <"The time period between the chilling of a tissue or tissue sample and the time it is warmed.
+
+			CIMI Alignment: In CIMI Version 0.0.4, specimen processing is represented as a 'SpecimenProcessingPerformed' clinical statement, mapped to FHIR Procedure. However, specimen processing should actually map to Specimen.processing, part of the Specimen resource. It would be a difficult mapping exercise (beyond the scope of this IG) to express the mapping rule that any CIMI SpecimenProcessingPerformed clinical statement needs to mapped to FHIR by (1) finding the corresponding Specimen entity, and (2) mapping the content of (possibly multiple) SpecimenProcessingPerformed into the FHIR Specimen resource. To avoid this complexity, the breast cancer model expresses the cold ischemia time as an attribute of the BreastSpecimen rather than a separate procedure.">
 		name = <"ColdIschemiaTime">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A quantity with units, whose value may be bounded from above or below, as defined in FHIR.
+				documentation = <"A period of time defined by a start and end time, date, or year.
 
-					This definition is not fully consistent with CIMI V0.0.4 (whose definition of Quantity lacks a comparator, but includes numerical precision). Complex data types that appear frequently in FHIR have not been profiled, even if CIMI defines them differently. This choice means that the breast cancer profiles use the native FHIR datatype, rather than having to substitute a CIMI profile everywhere the native type is used.">
+					If the start element is missing, the start of the period is not known. If the end element is missing, it means that the period is ongoing, or the start may be in the past, and the end date in the future, which means that period is expected/planned to end at the specified time. The end value includes any matching date/time. For example, the period 2011-05-23 to 2011-05-27 includes all the times from the start of the 23rd May through to the end of the 27th of May.">
 				name = <"value">
-				type = <"Quantity">
+				type = <"TimePeriod">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
 		>
 	>
-	["BreastRegionalLymphNodeSpecimen"] = <
-		documentation = <"The removal of regional lymph node(s) at the time of surgery of the primary site or during a separate surgical event. This model is yet to be determined.">
-		name = <"BreastRegionalLymphNodeSpecimen">
-		ancestors = <"BreastSpecimen", ...>
-	>
 	["MorphologyBehavior"] = <
-		documentation = <"A description of the morphology characteristics of the cancer.">
+		documentation = <"A description of the morphology and behavioral characteristics of the cancer.">
 		name = <"MorphologyBehavior">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -1751,21 +1722,35 @@ class_definitions = <
 		>
 	>
 	["BreastCancerPresenceStatement"] = <
-		documentation = <"FindingTopic or diagnosis of cancer originating in the tissues of the breast, and potentially spread to other organs of the body.
+		documentation = <"Diagnosis of cancer originating in the tissues of the breast, and potentially spread to other organs of the body.
 
-			The BreastCancerPresenceStatement is a subclass of ConditionPresenceStatement, which is a departure from CIMI. In CIMI, this would be a archetype of ClinicalStatement combining a BreastCancerConditionTopic with the ConditionPresenceContext. This would require definition of BreastCancerConditionTopic in the reference model, follwed by introduction of constraints on Value, Category, Stage, and MorphologyBehavior in the corresponding archetype.">
+			The BreastCancerPresenceStatement is a subclass of ConditionPresenceStatement, which is a departure from CIMI. In CIMI, this would be a archetype of ClinicalStatement combining a BreastCancerConditionTopic with the ConditionPresenceContext. This would require definition of BreastCancerConditionTopic in the reference model, follwed by introduction of constraints on Value, Category, Stage, and MorphologyBehavior in the corresponding archetype.
+
+			CIMI Alignment (and question for reviewers): The Topic of this statement is 'Neoplasm of the breast', not 'Assertion', with the logic that the topic of the statement is more specific than 'Assertion'.  The result (the value) gives the particular type (histologic type) of the condition. Does this make sense?">
 		name = <"BreastCancerPresenceStatement">
 		ancestors = <"ConditionPresenceStatement", ...>
 		properties = <
 			["morphologyBehavior"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"A description of the morphology characteristics of the cancer.">
+				documentation = <"A description of the morphology and behavioral characteristics of the cancer.">
 				name = <"morphologyBehavior">
 				type = <"MorphologyBehavior">
 			>
 		>
 	>
+	["BreastCancerStage"] = <
+		documentation = <"The stage of a breast cancer. Different staging systems use different staging groups, so there are currently no terminology bindings associated with this class.">
+		name = <"BreastCancerStage">
+		ancestors = <"EvaluationResultRecorded", ...>
+		properties = <
+			["stageTimingPrefix"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"Indicates when the staging was done, in terms of treatment landmarks.">
+				name = <"stageTimingPrefix">
+				type = <"StageTimingPrefix">
+			>
+		>
+	>
 	["StageTimingPrefix"] = <
-		documentation = <"Mandatory element indicating when the staging was done, in terms of treatment landmarks, either clinical (at diagnosis prior to treatment) (c), pathologic (post-surgical) (p), post-neoadjuvant clinical (yc), or post-neoadjuvant pathologic(yp). The stage timing code is prefix on the N stage. For example, for post-neoadjuvant clinical staging, the N categories are preceded by 'yc' (e.g. ycNX)">
+		documentation = <"Indicates when the staging was done, in terms of treatment landmarks.">
 		name = <"StageTimingPrefix">
 		properties = <
 			["value"] = (P_BMM_SINGLE_PROPERTY) <
@@ -1777,47 +1762,60 @@ class_definitions = <
 			>
 		>
 	>
-	["BreastCancerPrognosticStage"] = <
-		documentation = <"The prognostic stage of a breast cancer, assessed according to the standard established by American Joint Committee on Cancer (AJCC). Only the prognostic stage is used in US and Canada.">
-		name = <"BreastCancerPrognosticStage">
-		ancestors = <"EvaluationResultRecorded", ...>
+	["BreastCancerPrimaryTumorClassification"] = <
+		documentation = <"The size and extent of the primary tumor, based on criteria defined by the staging system being used.">
+		name = <"BreastCancerPrimaryTumorClassification">
+		ancestors = <"EvaluationComponent", ...>
 		properties = <
-			["stageTimingPrefix"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Mandatory element indicating when the staging was done, in terms of treatment landmarks, either clinical (at diagnosis prior to treatment) (c), pathologic (post-surgical) (p), post-neoadjuvant clinical (yc), or post-neoadjuvant pathologic(yp). The stage timing code is prefix on the N stage. For example, for post-neoadjuvant clinical staging, the N categories are preceded by 'yc' (e.g. ycNX)">
-				name = <"stageTimingPrefix">
-				type = <"StageTimingPrefix">
+			["stageSuffix"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A suffix used in conjuction with certain breast cancer stages, based on criteria defined by the staging system being used.">
+				name = <"stageSuffix">
+				type = <"StageSuffix">
+			>
+		>
+	>
+	["BreastCancerRegionalNodesClassification"] = <
+		documentation = <"The presence of metastases in regional lymph nodes, based on criteria defined by the staging system being used.">
+		name = <"BreastCancerRegionalNodesClassification">
+		ancestors = <"EvaluationComponent", ...>
+		properties = <
+			["stageSuffix"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A suffix used in conjuction with certain breast cancer stages, based on criteria defined by the staging system being used.">
+				name = <"stageSuffix">
+				type = <"StageSuffix">
+			>
+		>
+	>
+	["StageSuffix"] = <
+		documentation = <"A suffix used in conjuction with certain breast cancer stages, based on criteria defined by the staging system being used.">
+		name = <"StageSuffix">
+		properties = <
+			["value"] = (P_BMM_SINGLE_PROPERTY) <
+				documentation = <"A set of codes drawn from different coding systems, representing the same concept.">
+				name = <"value">
+				type = <"CodeableConcept">
 				is_mandatory = <True>
 				cardinality = <|1..1|>
 			>
 		>
 	>
-	["BreastCancerTCategory"] = <
-		documentation = <"The size and extent of the primary tumor (greatest dimension), based on criteria from the American Joint Committee on Cancer.">
-		name = <"BreastCancerTCategory">
+	["BreastCancerDistantMetastasesClassification"] = <
+		documentation = <"The presence of distant metastases, based on criteria defined by the staging system being used.">
+		name = <"BreastCancerDistantMetastasesClassification">
 		ancestors = <"EvaluationComponent", ...>
 	>
-	["BreastCancerNCategory"] = <
-		documentation = <"The presence of metastases in regional lymph nodes. The node category for staging is based on criteria from the American Joint Committee on Cancer.">
-		name = <"BreastCancerNCategory">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["BreastCancerMCategory"] = <
-		documentation = <"Part of the TNM classification system representing metastases.  The system is used to describe the spread of cancer to other parts of the body.">
-		name = <"BreastCancerMCategory">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["NuclearGrade"] = <
+	["DCISNuclearGrade"] = <
 		documentation = <"An evaluation of the size and shape of the nucleus in tumor cells and the percentage of tumor cells that are in the process of dividing or growing. Cancers with low nuclear grade grow and spread less quickly than cancers with high nuclear grade.">
-		name = <"NuclearGrade">
+		name = <"DCISNuclearGrade">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
 	>
-	["HistologicGrade"] = <
-		documentation = <"The Elston Grade/Nottingham Score, representative of the aggressive potential of the tumor. Well differentiated (Grade 1) look similar to normal cells and are usually slow growing, while poorly differentiated cells (Grade 3) look very different than normal and are fast-growing.">
-		name = <"HistologicGrade">
+	["BreastCancerHistologicGrade"] = <
+		documentation = <"The Elston Grade/Nottingham Score, representative of the aggressive potential of the tumor. Well differentiated cells (Grade 1) look similar to normal cells and are usually slow growing, while poorly differentiated cells (Grade 3) look very different than normal and are fast-growing.">
+		name = <"BreastCancerHistologicGrade">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
 	>
 	["TubuleFormationScore"] = <
-		documentation = <"A comparison between structures formed by the tumor cells as opposed to those formed by normal cells. Scored 1 to 3 with 3 being the most abnormal.">
+		documentation = <"A comparison between structures formed by the tumor cells and those formed by normal cells. Scored 1 to 3 with 3 being the most abnormal.">
 		name = <"TubuleFormationScore">
 		ancestors = <"EvaluationComponent", ...>
 	>
@@ -1827,14 +1825,16 @@ class_definitions = <
 		ancestors = <"EvaluationComponent", ...>
 	>
 	["MitoticCountScore"] = <
-		documentation = <"How fast the tumor cells are growing and dividing, determined from the number of mitotic cells present. Scored 1 to 3, with 3 being the most mitotic cells.">
+		documentation = <"How fast the tumor cells are growing and dividing, determined from the number of mitotic cells present. Scored 1 to 3, with 3 being the most mitotic cells.
+
+			We are seeking feedback on the value of representing the mitotic rate as a value rather than coded ranges.">
 		name = <"MitoticCountScore">
 		ancestors = <"EvaluationComponent", ...>
 	>
 	["EstrogenReceptorStatus"] = <
 		documentation = <"Estrogen receptor alpha is the predominant estrogen receptor expressed in breast tissue and is overexpressed in around 50% of breast carcinomas. ER status (positive=present or overexpressed; negative=absent) is a factor in determining prognosis and treatment options.
 
-			We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The point of view expressed in this model is that positive/negative designation is an interpretation, based on evidence such as NuclearPositivity and AverageStainingIntensity, not a direct result. This also appears to be the most consistent approach across all receptor statuses (ER, PR, and HER2).">
+			We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The current approach is that positive/negative designation is a value, even though that value is (in fact) an interpretation of evidence (NuclearPositivity and AverageStainingIntensity).">
 		name = <"EstrogenReceptorStatus">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
 	>
@@ -1843,9 +1843,16 @@ class_definitions = <
 
 			Based on discussion with Cancer Interoperability Group subject matter experts, there was insufficient rationale to include the following components in the data model: StainingControl, PrimaryAntibody, Allred Score (both total and component scores). We are seeking feedback on whether or not those components should be included in this model.
 
-			We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The point of view expressed in this model is that positive/negative designation is an interpretation, based on evidence such as NuclearPositivity and AverageStainingIntensity, not a direct result. This also appears to be the most consistent approach across all receptor statuses (ER, PR, and HER2).">
+			We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The current approach is that positive/negative designation is a value, even though that value is (in fact) an interpretation of evidence (NuclearPositivity and AverageStainingIntensity).">
 		name = <"ProgesteroneReceptorStatus">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
+	>
+	["NuclearPositivity"] = <
+		documentation = <"The percentage of cells that test (stain) positive for the presence of a receptor.
+
+			We are seeking feedback on whether nuclear positivity should be an exact percentage or a range of percentages. As currently defined, an exact nuclear positivity could be represented by a zero-width range, where the lower and upper bounds would be the same number.">
+		name = <"NuclearPositivity">
+		ancestors = <"EvaluationComponent", ...>
 	>
 	["AverageStainingIntensity"] = <
 		documentation = <"The degree or magnitude of staining (nuclear positivity) across cells in the specimen.">
@@ -1855,22 +1862,14 @@ class_definitions = <
 	["HER2ReceptorStatus"] = <
 		documentation = <"HER2 receptor status. HER2 is a member of the human epidermal growth factor receptor family of proteins and is encoded by the ERBB2 oncogene. HER2 is overexpressed in 20-30% of breast tumors,10 and is associated with an aggressive clinical course and poor prognosis. HER2 status (positive=present or overexpressed; negative=absent) is a factor in determining prognosis and treatment options.
 
-			We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The point of view expressed in this model is that positive/negative designation is an interpretation of HER2 by IHC and HER2 by ISH tests, not a direct result. This also appears to be the most consistent approach across all receptor statuses (ER, PR, and HER2).">
+			We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The current approach is that positive/negative designation is a value, even though that value is (in fact) an interpretation of evidence from HER2 by IHC and/or HER2 by ISH tests, not a direct observation.">
 		name = <"HER2ReceptorStatus">
 		ancestors = <"LaboratoryTestResultRecorded", ...>
-		properties = <
-			["exceptionValue"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Reason that a value associated with a test or other finding is missing.">
-				name = <"exceptionValue">
-				type = <"ExceptionValue">
-				cardinality = <|>=0|>
-			>
-		>
 	>
 	["HER2byIHC"] = <
 		documentation = <"HER2 receptor status as determined by Immunohistochemistry (IHC).">
 		name = <"HER2byIHC">
-		ancestors = <"EvaluationResultRecorded", ...>
+		ancestors = <"LaboratoryTestResultRecorded", ...>
 	>
 	["CompleteMembraneStainingPercent"] = <
 		documentation = <"Percentage of cells with uniform intense complete membrane staining.">
@@ -1880,7 +1879,7 @@ class_definitions = <
 	["HER2byISH"] = <
 		documentation = <"HER2 receptor status as determined by In Situ Hybridization (ISH).">
 		name = <"HER2byISH">
-		ancestors = <"EvaluationResultRecorded", ...>
+		ancestors = <"LaboratoryTestResultRecorded", ...>
 	>
 	["AverageHER2SignalsPerCell"] = <
 		documentation = <"Average number of HER2 signals per cell">
@@ -1897,39 +1896,24 @@ class_definitions = <
 		name = <"HER2toCEP17Ratio">
 		ancestors = <"EvaluationComponent", ...>
 	>
-	["Aneusomy"] = <
-		documentation = <"Aneusomy (as defined by vendor kit used)">
-		name = <"Aneusomy">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["HeterogeneousSignals"] = <
-		documentation = <"Whether In Situ Hybridization signals were heterogeneous.">
-		name = <"HeterogeneousSignals">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["PercentageAmplified"] = <
-		documentation = <"Percentage of cells with amplified HER2 signals">
-		name = <"PercentageAmplified">
-		ancestors = <"EvaluationComponent", ...>
-	>
 	["OncotypeDxInvasiveRecurrenceScore"] = <
-		documentation = <"The Oncotype DX test for invasive breast cancer examines the activity of 21 genes in a patient’s breast tumor tissue to provide personalized information for tailoring treatment based on the biology of their individual disease. The value is 0 to 100 indicates the estimated risk of recurrence with highest risk indicated by score > 31.
+		documentation = <"The Oncotype DX test for invasive breast cancer examines the activity of 21 genes in a patient’s breast tumor tissue to provide personalized information for tailoring treatment based on the biology of their individual disease. The value from 0 to 100 indicates the estimated risk of recurrence, with the highest risk indicated by a score greater than 31.
 
-			No LOINC code currently exists for this test.">
+			No LOINC code currently exists for this test. We are seeking feedback on the value of separating OncotypeDx scores for DCIS and invasive breast carcinomas. Does it make more sense to report the OncotypeDx as a single score, regardless of the type of cancer?">
 		name = <"OncotypeDxInvasiveRecurrenceScore">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
 	>
 	["OncotypeDxDCISRecurrenceScore"] = <
-		documentation = <"The Oncotype DX test for DCIS (Ductal Carcinoma in Situ) breast cancer. Risk scores are range from 0 to 100 with the following interpretations: 0-38: Low-Risk, 39-54: Intermediate-Risk, 55+: High-Risk.
+		documentation = <"The Oncotype DX test for DCIS (Ductal Carcinoma in Situ) breast cancer. Risk scores range from 0 to 100 with the following interpretations: 0-38: Low-Risk, 39-54: Intermediate-Risk, 55+: High-Risk.
 
-			No LOINC code currently exists for this test.">
+			No LOINC code currently exists for this test. We are seeking feedback on the value of separating OncotypeDx scores for DCIS and invasive breast carcinomas. Does it make more sense to report the OncotypeDx as a single score, regardless of the type of cancer?">
 		name = <"OncotypeDxDCISRecurrenceScore">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
 	>
 	["ProsignaRecurrenceScore"] = <
 		documentation = <"Breast cancer genomic signature assay for 10-year risk of distant recurrence score calculated by Prosigna.
 
-			The Prosigna Score is reported on a 0 -100 scale (referred to as ROR Score or Risk of Recurrence Score in the literature), which is correlated with the probability of distant recurrence at ten years for post-menopausal women with hormone receptorpositive, early stage breast cancer.">
+			The Prosigna Score is reported on a 0 -100 scale (referred to as ROR Score or Risk of Recurrence Score in the literature), which is correlated with the probability of distant recurrence at ten years for post-menopausal women with hormone receptor positive, early stage breast cancer.">
 		name = <"ProsignaRecurrenceScore">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
 	>
@@ -1942,82 +1926,5 @@ class_definitions = <
 		name = <"MammaprintRecurrenceScore">
 		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
 	>
-	["TumorDimensions"] = <
-		documentation = <"undefined">
-		name = <"TumorDimensions">
-		ancestors = <"LaboratoryTestResultRecorded", ...>
-		properties = <
-			["exceptionValue"] = (P_BMM_SINGLE_PROPERTY) <
-				documentation = <"Reason that a value associated with a test or other finding is missing.">
-				name = <"exceptionValue">
-				type = <"ExceptionValue">
-				cardinality = <|>=0|>
-			>
-		>
-	>
-	["TumorPrimaryDimensionSize"] = <
-		documentation = <"The longest diameter of the primary tumor.">
-		name = <"TumorPrimaryDimensionSize">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["TumorSecondaryDimensionSize"] = <
-		documentation = <"The longest perpendicular diameter of the primary tumor.">
-		name = <"TumorSecondaryDimensionSize">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["SizeOfGrossTumorBed"] = <
-		documentation = <"The largest dimension of the gross tumor bed/fibrotic area.">
-		name = <"SizeOfGrossTumorBed">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["TumorMargins"] = <
-		documentation = <"The edge or border of the tissue removed in cancer surgery. The margin is described as negative or clean when the pathologist finds no cancer cells at the edge of the tissue, suggesting that all of the cancer has been removed. The margin is described as positive or involved when the pathologist finds cancer cells at the edge of the tissue, suggesting that all of the cancer has not been removed.">
-		name = <"TumorMargins">
-		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
-	>
-	["TumorMarginDescription"] = <
-		documentation = <"Description of the edge or border of tumor in situ by radiologist or of removed tumor by pathologist.">
-		name = <"TumorMarginDescription">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["Cellularity"] = <
-		documentation = <"Percentage of cells in a sample that are cancerous">
-		name = <"Cellularity">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["PercentageInSituCarcinoma"] = <
-		documentation = <"The percentage of the cancer that is in situ, as opposed to invading other tissues.">
-		name = <"PercentageInSituCarcinoma">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["LymphaticInvolvement"] = <
-		documentation = <"Description of lymph nodes contain cancer cells.">
-		name = <"LymphaticInvolvement">
-		ancestors = <"LaboratoryTestResultRecorded", ...>
-	>
-	["LargestLymphNodeSize"] = <
-		documentation = <"The largest dimension of the largest lymph node invaded by cancer cells.">
-		name = <"LargestLymphNodeSize">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["NumberOfLymphNodesInvolved"] = <
-		documentation = <"A count of lymph nodes invaded by cancer cells of those examined.">
-		name = <"NumberOfLymphNodesInvolved">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["DegreeOfLymphaticInvolvement"] = <
-		documentation = <"Assessment of how much cancer is in a lymph node.">
-		name = <"DegreeOfLymphaticInvolvement">
-		ancestors = <"EvaluationComponent", ...>
-	>
-	["Ki-67LabelingIndex"] = <
-		documentation = <"Ki-67 is a protein phosphatase whose expression is strongly associated with cell proliferation and encoded by the MKI67 gene. The Ki67 labeling index is the fraction of Ki-67-positive cells to total cells in a tumor specimen and may be useful for determining prognosis with respect to survival and disease recurrence. The more positive cells there are, the more quickly they are dividing and forming new cells.	ReferenceRange: Low <10, Intermediate 10-20, >20 High">
-		name = <"Ki-67LabelingIndex">
-		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
-	>
-	["S-PhaseFraction"] = <
-		documentation = <"An expression of the number of mitoses found in a stated number of cells. The S-phase fraction number tells you what percentage of cells in the tissue sample are in the process of copying their genetic information (DNA). This S-phase, short for synthesis phase, happens just before a cell divides into two new cells. ReferenceRange: Low <6, Intermediate 6-10, >10 High.">
-		name = <"S-PhaseFraction">
-		ancestors = <"SimplifiedLaboratoryTestResultRecorded", ...>
-	>
 >
+

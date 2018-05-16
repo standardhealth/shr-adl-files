@@ -1,5 +1,5 @@
 archetype (adl_version=2.3; rm_release=0.0.1)
-  SHR-CORE-NuclearGrade.nuclear_grade.v0.0.1
+  SHR-CORE-DCISNuclearGrade.d_c_i_s_nuclear_grade.v0.0.1
 
 specialize
   SHR-CORE-SimplifiedLaboratoryTestResultRecorded.simplified_laboratory_test_result_recorded.v0.0.1
@@ -12,32 +12,29 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
       language = <[ISO_639-1::en]>
       purpose = <"SHR implementation of ASCO requirements.">
       use = <"SHR implementation of ASCO requirements.">
-      keywords = <"oncology","nuclear grade">
+      keywords = <"oncology","d c i s nuclear grade">
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
-  NuclearGrade[id1.1.1.1.1.1.1.1] matches {
-    topicCode matches {
-      CodeableConcept = <[http://ncimeta.nci.nih.gov::C18513]>
-    }
-    specimen matches {
-      BreastSpecimen[id0.0.0.3]
-    }
-    codeableConcept existence matches {1..1} matches {
-      /CodeableConcept matches {[ac0.0.0.0.0.0.0.1]}
+  DCISNuclearGrade[id1.1.1.1.1.1.1.1] matches {
+    /statementTopic matches {
+      EvaluationResultTopic[id0.0.0.0.0.0.0.4] matches {
+        valueChoiceCodeableConcept matches { CodeableConcept[id0.0.0.0.0.0.0.2] }
+        specimen matches { BreastSpecimen[id0.0.0.0.0.0.0.3] }
+      }
     }
   }
 
@@ -45,36 +42,28 @@ terminology
   term_definitions = <
     ["en"] = <
       ["id1.1.1.1.1.1.1.1"] = <
-        text = <"NuclearGrade">
+        text = <"DCISNuclearGrade">
         description = <"An evaluation of the size and shape of the nucleus in tumor cells and the percentage of tumor cells that are in the process of dividing or growing. Cancers with low nuclear grade grow and spread less quickly than cancers with high nuclear grade.">
       >
-      ["id0.2"] = <
+      ["id0.0.0.0.0.0.0.2"] = <
         text = <"CodeableConcept">
         description = <"A set of codes drawn from different coding systems, representing the same concept.">
       >
-      ["id0.0.0.3"] = <
+      ["id0.0.0.0.0.0.0.3"] = <
         text = <"BreastSpecimen">
         description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
       >
-      ["ac0.0.0.0.0.0.0.1"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/NuclearGradeVS">
+      ["id0.0.0.0.0.0.0.4"] = <
+        text = <"EvaluationResultTopic">
         description = <"-">
       >
-      ["at0.0.0.0.0.0.0.1"] = <
-        text = <"C18513">
-        description = <"-">
-      >
-    >
-  >
-  term_bindings = <
-    ["snomed-ct"] = <
-      items = <
-      [id0.0.0.0.0.0.0.1] = <C18513>
-      >
-    >
-    ["snomed-ct"] = <
-      items = <
-      [id0.0.0.0.0.0.0.2] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/NuclearGradeVS>
-      >
+      --["ac0.0.0.0.0.0.0.1"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-NuclearGradeVS">
+      --  description = <"-">
+      -->
+      --["at0.0.0.0.0.0.0.1"] = <
+      --  text = <"C18513">
+      --  description = <"-">
+      -->
     >
   >

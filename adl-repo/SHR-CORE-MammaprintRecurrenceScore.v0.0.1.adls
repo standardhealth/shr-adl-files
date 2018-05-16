@@ -12,7 +12,7 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
@@ -23,27 +23,18 @@ description
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
   MammaprintRecurrenceScore[id1.1.1.1.1.1.1.1] matches {
-    topicCode matches {
-      CodeableConcept = <[http://ncimeta.nci.nih.gov::C2827401]>
-    }
-    specimen matches {
-      BreastSpecimen[id0.0.0.3]
-    }
-    interpretation matches {
-      /Interpretation matches {[ac0.0.0.0.0.0.0.1]}
-    }
-    diagnosticService matches {
-      CodeableConcept = <[http://hl7.org/fhir/us/breastcancer/finding/cs/DiagnosticServiceCS::pathology]>
-    }
-    quantity existence matches {1..1} matches {
-      decimal[id0.0.0.4] matches {1..1}
+    /statementTopic matches {
+      EvaluationResultTopic[id0.0.0.0.0.0.0.4] matches {
+        valueChoiceQuantity matches { Quantity[id0.0.0.0.0.0.0.2] }
+        specimen matches { BreastSpecimen[id0.0.0.0.0.0.0.3] }
+      }
     }
   }
 
@@ -53,47 +44,36 @@ terminology
       ["id1.1.1.1.1.1.1.1"] = <
         text = <"MammaprintRecurrenceScore">
         description = <"Breast cancer genomic signature assay for 10-year risk of distant recurrence score calculated by Mammaprint.
-                      
+
                       In the United States, MammaPrint can only be used on cancers that are stage I or stage II, invasive, smaller than 5 centimeters, and estrogen-receptor-positive or -negative. Scores range from -1.0 to +1.0, with scores less than 0 indicating high risk, and scores greater than 0 indicating low risk.
-                      
+
                       The is currently no LOINC code for Mammaprint test.">
       >
-      ["id0.2"] = <
-        text = <"CodeableConcept">
-        description = <"A set of codes drawn from different coding systems, representing the same concept.">
+      ["id0.0.0.0.0.0.0.2"] = <
+        text = <"Quantity">
+        description = <"A quantity with units, whose value may be bounded from above or below, as defined in FHIR.
+
+                      This definition is not fully consistent with CIMI V0.0.4 (whose definition of Quantity lacks a comparator, but includes numerical precision). Complex data types that appear frequently in FHIR have not been profiled, even if CIMI defines them differently. This choice means that the breast cancer profiles use the native FHIR datatype, rather than having to substitute a CIMI profile everywhere the native type is used.">
       >
-      ["id0.0.0.3"] = <
+      ["id0.0.0.0.0.0.0.3"] = <
         text = <"BreastSpecimen">
         description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
       >
-      ["id0.0.0.4"] = <
-        text = <"decimal">
+      ["id0.0.0.0.0.0.0.4"] = <
+        text = <"EvaluationResultTopic">
         description = <"-">
       >
-      ["ac0.0.0.0.0.0.0.1"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/MammaprintRiskScoreInterpretationVS">
-        description = <"-">
-      >
-      ["at0.0.0.0.0.0.0.1"] = <
-        text = <"C2827401">
-        description = <"-">
-      >
-      ["at0.0.0.0.0.0.0.2"] = <
-        text = <"pathology">
-        description = <"-">
-      >
-    >
-  >
-  term_bindings = <
-    ["snomed-ct"] = <
-      items = <
-      [id0.0.0.0.0.0.0.1] = <C2827401>
-      >
-    >
-    ["snomed-ct"] = <
-      items = <
-      [id0.0.0.0.0.0.0.2] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/MammaprintRiskScoreInterpretationVS>
-      [id0.0.0.0.0.0.0.3] = <pathology>
-      >
+      --["ac0.0.0.0.0.0.0.1"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-MammaprintRiskScoreInterpretationVS">
+      --  description = <"-">
+      -->
+      --["at0.0.0.0.0.0.0.1"] = <
+      --  text = <"C2827401">
+      --  description = <"-">
+      -->
+      --["at0.0.0.0.0.0.0.2"] = <
+      --  text = <"pathology">
+      --  description = <"-">
+      -->
     >
   >

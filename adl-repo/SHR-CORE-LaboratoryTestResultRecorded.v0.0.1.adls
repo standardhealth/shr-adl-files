@@ -12,19 +12,19 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
       language = <[ISO_639-1::en]>
-      purpose = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
-      use = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
-      keywords = <"finding","laboratory test result recorded">
+      purpose = <"The namespace containing cimi-derived classes representing complete clinical statements. In this specification, these classes derive from the StatementTopic class hierarchy, not ClinicalStatement, which is a significant departure from CIMI. This simplifies the resulting logical models.">
+      use = <"The namespace containing cimi-derived classes representing complete clinical statements. In this specification, these classes derive from the StatementTopic class hierarchy, not ClinicalStatement, which is a significant departure from CIMI. This simplifies the resulting logical models.">
+      keywords = <"cimi.statement","laboratory test result recorded">
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
@@ -40,11 +40,15 @@ terminology
     ["en"] = <
       ["id1.1.1.1.1.1"] = <
         text = <"LaboratoryTestResultRecorded">
-        description = <"Measurement resulting from a laboratory analysis.">
+        description = <"Measurement resulting from a laboratory analysis. The category is fixed to 'laboratory' to align with US-Core.">
       >
       ["id0.0.0.0.0.1"] = <
         text = <"DiagnosticService">
         description = <"A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.">
       >
+      --["at0.0.0.0.0.1"] = <
+        --text = <"laboratory">
+        --description = <"-">
+      -->
     >
   >

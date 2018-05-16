@@ -12,32 +12,24 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
       language = <[ISO_639-1::en]>
-      purpose = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
-      use = <"The SHR Finding domain contains basic definitions used to capture subjective and objective information about the subject. Things observed about the subject can include demographic facts, history, subjective and objective observations, assessments, and judgments, excluding actual or potential interventions, and range from simple answered questions to vital signs and laboratory results.">
-      keywords = <"finding","simplified laboratory test result recorded">
+      purpose = <"The namespace containing cimi-derived classes representing complete clinical statements. In this specification, these classes derive from the StatementTopic class hierarchy, not ClinicalStatement, which is a significant departure from CIMI. This simplifies the resulting logical models.">
+      use = <"The namespace containing cimi-derived classes representing complete clinical statements. In this specification, these classes derive from the StatementTopic class hierarchy, not ClinicalStatement, which is a significant departure from CIMI. This simplifies the resulting logical models.">
+      keywords = <"cimi.statement","simplified laboratory test result recorded">
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
-  SimplifiedLaboratoryTestResultRecorded[id1.1.1.1.1.1.1] matches {
-    --category matches {
-      --CodeableConcept = <[http://hl7.org/fhir/observation-category::laboratory]>
-    --}
-    anatomicalLocation existence matches {0}
-    precondition existence matches {0}
-    referenceRange existence matches {0}
-    --members existence matches {0}
-  }
+  SimplifiedLaboratoryTestResultRecorded[id1.1.1.1.1.1.1]
 
 terminology
   term_definitions = <
@@ -45,35 +37,6 @@ terminology
       ["id1.1.1.1.1.1.1"] = <
         text = <"SimplifiedLaboratoryTestResultRecorded">
         description = <"The usual case for a test result from a pathology lab, based on a specimen taken from a patient. Note that the body site is not explicit here; it is part of the specimen resource associated with the lab result.">
-      >
-      --["id0.0.0.0.0.0.2"] = <
-        --text = <"CodeableConcept">
-        --description = <"A set of codes drawn from different coding systems, representing the same concept.">
-      -->
-      --["id0.0.0.0.0.0.3"] = <
-        --text = <"Range">
-        --description = <"An interval defined by a quantitative upper and/or lower bound. One of the two bounds must be specified, and the lower bound must be less than the upper bound. When Quantities are specified, the units of measure must be the same.">
-      -->
-      --["id0.0.0.0.0.0.4"] = <
-        --text = <"EvaluationResultTopic">
-        --description = <"The base class, independent of context for evaluations (measurements, tests, or questions) and a value containing the result (answer).
---
-                      --The subject of a finding can be the entire patient, or an entity such as a location body structure, intervention, or condition. Things observed about the subject can include social and behavioral factors, subjective and objective observations, and assessments.
---
-                      --In CIMI Version 0.0.4, LaboratoryTestResult.specimen is 0..* but that cardinality makes it impossible to map to FHIR Observation, because Observation.specimen is 0..1. Therefore, the cardinality of Specimen is changed to 0..1 to be consistent with FHIR.
---
-                      --In CIMI Version 0.0.4, Findings (including EvaluationResult and LaboratoryTestResult) do not have related ('has-member') observations, nor components (sub-observations). These features of FHIR Observations were found to be very useful in modeling breast cancer pathology, and so they are included here. This represents a significant departure from the CIMI model.">
-      -->
-      --["at0.0.0.0.0.0.1"] = <
-        --text = <"laboratory">
-        --description = <"-">
-      -->
-    >
-  >
-  term_bindings = <
-    ["snomed-ct"] = <
-      items = <
-      --  ["at0.0.0.0.0.0.1"] = <laboratory>
       >
     >
   >

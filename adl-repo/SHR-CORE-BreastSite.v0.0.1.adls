@@ -12,7 +12,7 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
@@ -23,8 +23,8 @@ description
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
@@ -35,13 +35,6 @@ definition
     }
     distanceToNipple matches {
       DistanceToNipple[id0.0.0.2]
-    }
-    /laterality/value matches {[ac0.0.0.1]}
-    /portionTotality/value matches {[ac0.0.0.2]}
-    directionality existence matches {0}
-
-    value matches {
-      CodeableConcept[id0.0.1.3] matches {[ac0.0.0.2]}
     }
   }
 
@@ -60,25 +53,9 @@ terminology
         text = <"DistanceToNipple">
         description = <"The body site location in relation to the nipple.">
       >
-      ["id0.0.1.3"] = <
-        text = <"CodeableConcept">
-        description = <"A set of codes drawn from different coding systems, representing the same concept.">
-      >
-      ["ac0.0.0.1"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/LeftRightLateralityVS">
-        description = <"-">
-      >
-      ["ac0.0.0.2"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSiteVS">
-        description = <"-">
-      >
-    >
-  >
-  term_bindings = <
-    ["fhir"] = <
-      items = <
-      ["id0.0.0.1"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/LeftRightLateralityVS>
-      ["id0.0.1.3"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSiteVS>
-      >
+      --["ac0.0.0.1"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-BreastSiteVS">
+      --  description = <"-">
+      -->
     >
   >

@@ -12,7 +12,7 @@ description
     ["name"] = <"Mark Kramer">
     ["organisation"] = <"The MITRE Corporation">
     ["email"] = <"mkramer@mitre.org">
-    ["date"] = <"5/8/2018">
+    ["date"] = <"5/14/2018">
   >
   details = <
     ["en"] = <
@@ -23,8 +23,8 @@ description
     >
   >
   lifecycle_state = <"initial">
-  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
-  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC).">
+  other_contributors = <"Rute Batiste <rbatiste@mitre.org>, Abhijay Bhatnagar <abhatnagar@mitre.org>, Chris Moesel <cmoesel@mitre.org>, Michael O'Keefe <mokeefe@mitre.org>">
+  custodian_organisation = <"The HL7 Cancer Interoperability Group sponsored by Clinical Interoperability Council Work Group (CIC)">
   licence = <"Creative Commons CC-BY <https://creativecommons.org/licenses/by/3.0/>">
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
@@ -33,14 +33,8 @@ definition
     coldIschemiaTime matches {
       ColdIschemiaTime[id0.0.0.1]
     }
-    /type/value matches {[ac0.0.0.1]}
-    /sourceSpecimen/value matches {
-      BreastSpecimen[id0.0.0.3]
-    }
-    /collectionMethod/value matches {[ac0.0.0.2]}
-    /collectionSite/value matches {
-      BreastSite[id0.0.0.2]
-    }
+  /sourceSpecimen/value matches { BreastSpecimen[id0.0.0.2] }
+  /collectionSite/value matches { BreastSite[id0.0.0.3] }
   }
 
 terminology
@@ -52,32 +46,25 @@ terminology
       >
       ["id0.0.0.1"] = <
         text = <"ColdIschemiaTime">
-        description = <"The time between the chilling of a tissue or tissue sample and the time it is warmed.
-                          NOTE: In CIMI Version 0.0.4, processing of a specimen is represented as an independent clinical statement involving a SpecimenProcessingTopic and PerformanceContext. The CIMI clinical statement would be mapped to FHIR as a Procedure. In this case, the procedure involves chilling the specimen (the key or code) and the duration of that procedure (corresponding to PerformanceContext.duration) would be interpreted as the cold ischemic time. The drawback of this would be that the information on cold ischemic time (necessary for interpreting results) would not travel with the specimen. To provide a cutpoint between this IG and the rest of CIMI, and to avoid unnecessary complexity, an extension was introduced.">
+        description = <"The time period between the chilling of a tissue or tissue sample and the time it is warmed.
+
+                      CIMI Alignment: In CIMI Version 0.0.4, specimen processing is represented as a 'SpecimenProcessingPerformed' clinical statement, mapped to FHIR Procedure. However, specimen processing should actually map to Specimen.processing, part of the Specimen resource. It would be a difficult mapping exercise (beyond the scope of this IG) to express the mapping rule that any CIMI SpecimenProcessingPerformed clinical statement needs to mapped to FHIR by (1) finding the corresponding Specimen entity, and (2) mapping the content of (possibly multiple) SpecimenProcessingPerformed into the FHIR Specimen resource. To avoid this complexity, the breast cancer model expresses the cold ischemia time as an attribute of the BreastSpecimen rather than a separate procedure.">
       >
       ["id0.0.0.2"] = <
-        text = <"BreastSite">
-        description = <"A body site specific to the breast structure.">
-      >
-      ["id0.0.0.3"] = <
         text = <"BreastSpecimen">
         description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
       >
-      ["ac0.0.0.1"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenTypeVS">
-        description = <"-">
+      ["id0.0.0.3"] = <
+        text = <"BreastSite">
+        description = <"A body site specific to the breast structure.">
       >
-      ["ac0.0.0.2"] = <
-        text = <"http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenCollectionMethodVS">
-        description = <"-">
-      >
-    >
-  >
-  term_bindings = <
-    ["snomed-ct"] = <
-      items = <
-      ["id0.0.0.1"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenTypeVS>
-      ["id0.0.0.2"] = <http://hl7.org/fhir/us/breastcancer/oncology/vs/BreastSpecimenCollectionMethodVS>
-      >
+      --["ac0.0.0.1"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-BreastSpecimenTypeVS">
+      --  description = <"-">
+      -->
+      --["ac0.0.0.2"] = <
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-BreastSpecimenCollectionMethodVS">
+      --  description = <"-">
+      -->
     >
   >

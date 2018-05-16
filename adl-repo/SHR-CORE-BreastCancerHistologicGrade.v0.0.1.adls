@@ -1,5 +1,5 @@
 archetype (adl_version=2.3; rm_release=0.0.1)
-  SHR-CORE-ProgesteroneReceptorStatus.progesterone_receptor_status.v0.0.1
+  SHR-CORE-BreastCancerHistologicGrade.breast_cancer_histologic_grade.v0.0.1
 
 specialize
   SHR-CORE-SimplifiedLaboratoryTestResultRecorded.simplified_laboratory_test_result_recorded.v0.0.1
@@ -19,7 +19,7 @@ description
       language = <[ISO_639-1::en]>
       purpose = <"SHR implementation of ASCO requirements.">
       use = <"SHR implementation of ASCO requirements.">
-      keywords = <"oncology","progesterone receptor status">
+      keywords = <"oncology","breast cancer histologic grade">
     >
   >
   lifecycle_state = <"initial">
@@ -29,7 +29,7 @@ description
   copyright = <"Copyright (c) The MITRE Organization <http://mitre.org>">
 
 definition
-  ProgesteroneReceptorStatus[id1.1.1.1.1.1.1.1] matches {
+  BreastCancerHistologicGrade[id1.1.1.1.1.1.1.1] matches {
     /statementTopic matches {
       EvaluationResultTopic[id0.0.0.0.0.0.0.4] matches {
         valueChoiceCodeableConcept matches { CodeableConcept[id0.0.0.0.0.0.0.2] }
@@ -42,12 +42,8 @@ terminology
   term_definitions = <
     ["en"] = <
       ["id1.1.1.1.1.1.1.1"] = <
-        text = <"ProgesteroneReceptorStatus">
-        description = <"Progesterone receptor status is a factor in determining prognosis and treatment options. The value is the percentage of cells that test (stain) positive for the presence of a receptor. The interpretation of positive or negative (found in the interpretation property) is based on the staining percentage, and may take into account the staining intensity.
-
-                      Based on discussion with Cancer Interoperability Group subject matter experts, there was insufficient rationale to include the following components in the data model: StainingControl, PrimaryAntibody, Allred Score (both total and component scores). We are seeking feedback on whether or not those components should be included in this model.
-
-                      We are seeking feedback if it is better to put the positive/negative status in Value or Interpretation. The current approach is that positive/negative designation is a value, even though that value is (in fact) an interpretation of evidence (NuclearPositivity and AverageStainingIntensity).">
+        text = <"BreastCancerHistologicGrade">
+        description = <"The Elston Grade/Nottingham Score, representative of the aggressive potential of the tumor. Well differentiated cells (Grade 1) look similar to normal cells and are usually slow growing, while poorly differentiated cells (Grade 3) look very different than normal and are fast-growing.">
       >
       ["id0.0.0.0.0.0.0.2"] = <
         text = <"CodeableConcept">
@@ -57,13 +53,17 @@ terminology
         text = <"BreastSpecimen">
         description = <"Specimen resulting from biopsy or excision of breast and surrounding tissue.">
       >
+      ["id0.0.0.0.0.0.0.4"] = <
+        text = <"EvaluationResultTopic">
+        description = <"-">
+      >
       --["ac0.0.0.0.0.0.0.1"] = <
-      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-PositiveNegativeVS">
+      --  text = <"http://hl7.org/fhir/us/breastcancer/ValueSet/oncology-NottinghamCombinedGradeVS">
       --  description = <"-">
       -->
       --["at0.0.0.0.0.0.0.1"] = <
-      --  text = <"16113-3">
-      --  description = <"Progesterone receptor [Interpretation] in Tissue">
+        --text = <"44648-4">
+        --description = <"-">
       -->
       --["at0.0.0.0.0.0.0.2"] = <
       --  text = <"pathology">
